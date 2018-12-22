@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать"/>
+                <MenuItem Header="Открыть"/>
+                <MenuItem Header="Закрыть"/>
+            </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+        <TabPanel>
+            <TabItem Header="Вкладка 1"/>
+            <TabItem Header="Вкладка 2"/>
+            <TabItem Header="Вкладка 3"/>
+            <TabItem Header="Вкладка 4"/>
+        </TabPanel>
+    </DockPanel>
 </Window>
