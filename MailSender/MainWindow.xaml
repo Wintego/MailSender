@@ -17,11 +17,25 @@
                 <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
-        <TabPanel>
-            <TabItem Header="Вкладка 1"/>
+        <TabControl>
+            <TabItem Header="Вкладка 1" IsEnabled="True">
+                <WrapPanel Orientation="Vertical" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ваш Email: "/>
+                        <TextBox Width="250"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Кому: "/>
+                        <TextBox Width="250" Margin="0"/>
+                    </StackPanel>
+                    <TextBlock Text="Сообщение: "  Margin="0,5,0,0"/>
+                    <TextBox Width="500" Height="240"/>
+                    <Button Content="Отправить"></Button>
+                </WrapPanel>                
+            </TabItem>
             <TabItem Header="Вкладка 2"/>
             <TabItem Header="Вкладка 3"/>
             <TabItem Header="Вкладка 4"/>
-        </TabPanel>
+        </TabControl>
     </DockPanel>
 </Window>
