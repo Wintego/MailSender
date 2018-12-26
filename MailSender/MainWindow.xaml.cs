@@ -45,7 +45,7 @@ namespace MailSender
                         {
                             sc.Send(mm);
                         }
-                        catch (Exception ex) { new SendEndWindow($"{email_addr}: {ex.Message}").Show(); }
+                        catch (Exception ex) { new SendEndWindow($"{email_addr}: {ex.Message}").Show(); }//
                     }
                 }
             }
