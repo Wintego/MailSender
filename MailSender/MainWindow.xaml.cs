@@ -29,26 +29,26 @@ namespace MailSender
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<string> emails = to.Text.Split(',').ToList();
+            //List<string> emails = to.Text.Split(',').ToList();
 
-            foreach (var email_addr in emails)
-            {
-                using (var mm = new MailMessage(this.email.Text, email_addr/*to.Text*/, subject.Text, message.Text))
-                {
-                    using (var sc = new SmtpClient(WpfTestMailSender.smtp_adress, WpfTestMailSender.smtp_port))
-                    {
-                        sc.EnableSsl = true;
-                        sc.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        sc.UseDefaultCredentials = false;
-                        sc.Credentials = new NetworkCredential(this.email.Text, psw.Password);
-                        try
-                        {
-                            sc.Send(mm);
-                        }
-                        catch (Exception ex) { new SendEndWindow($"{email_addr}: {ex.Message}").Show(); }//
-                    }
-                }
-            }
+            //foreach (var email_addr in emails)
+            //{
+            //    using (var mm = new MailMessage(this.email.Text, email_addr/*to.Text*/, subject.Text, message.Text))
+            //    {
+            //        using (var sc = new SmtpClient(WpfTestMailSender.smtp_adress, WpfTestMailSender.smtp_port))
+            //        {
+            //            sc.EnableSsl = true;
+            //            sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //            sc.UseDefaultCredentials = false;
+            //            sc.Credentials = new NetworkCredential(this.email.Text, psw.Password);
+            //            try
+            //            {
+            //                sc.Send(mm);
+            //            }
+            //            catch (Exception ex) { new SendEndWindow($"{email_addr}: {ex.Message}").Show(); }//
+            //        }
+            //    }
+            //}
             
         }
     }
