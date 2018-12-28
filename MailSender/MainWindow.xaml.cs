@@ -27,44 +27,34 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //List<string> emails = to.Text.Split(',').ToList();
-
-            //foreach (var email_addr in emails)
-            //{
-            //    using (var mm = new MailMessage(this.email.Text, email_addr/*to.Text*/, subject.Text, message.Text))
-            //    {
-            //        using (var sc = new SmtpClient(WpfTestMailSender.smtp_adress, WpfTestMailSender.smtp_port))
-            //        {
-            //            sc.EnableSsl = true;
-            //            sc.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //            sc.UseDefaultCredentials = false;
-            //            sc.Credentials = new NetworkCredential(this.email.Text, psw.Password);
-            //            try
-            //            {
-            //                sc.Send(mm);
-            //            }
-            //            catch (Exception ex) { new SendEndWindow($"{email_addr}: {ex.Message}").Show(); }//
-            //        }
-            //    }
-            //}
-            
+            timePicker.Value = DateTime.Now;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var start = redaktor.Document.ContentStart;
+            var end = redaktor.Document.ContentEnd;
+            int difference = start.GetOffsetToPosition(end);
+            if (difference <= 4)
+            {
+                new SendEndWindow("Введите текст письма").ShowDialog();
+                editLetter.IsSelected = true;
+                return;
+            }
+                
+
             var server = servers.SelectedItem as SpamTools.lib.Data.MailServer;
             if (server ==  null)
             {
                 new SendEndWindow("Сервер не выбран").ShowDialog();
+                return;
             }
 
             var user = users.SelectedItem as SpamTools.lib.Data.Sender;
-            if (server == null)
+            if (user == null)
             {
                 new SendEndWindow("Отправитель не выбран").ShowDialog();
+                return;
             }
             var password = new SecureString();
             
