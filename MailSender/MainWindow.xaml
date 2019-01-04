@@ -9,9 +9,12 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
-        
+        Title="{Binding TestTextValue}" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:TestMainViewModel/>
+    </Window.DataContext>
+    <DockPanel>        
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
@@ -145,10 +148,14 @@
             </TabItem>
             <TabItem Header="Редактор писем" Name="editLetter">
                 <Grid>
-                    <RichTextBox Name="redaktor">
-                        
-                    </RichTextBox>
+                    <RichTextBox Name="redaktor"/>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Статистика">
+                <Grid>
+                    <TextBox Margin="85,35,391,296" Text="{Binding TestTextValue, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Margin="85,72,391,259" Text="{Binding TestTextValue}"></TextBlock> 
+                </Grid>                
             </TabItem>
         </TabControl>
 
