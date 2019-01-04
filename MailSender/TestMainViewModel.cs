@@ -7,13 +7,13 @@ using SpamTools.lib.MVVM;
 
 namespace MailSender
 {
-    public class TestMainViewModel: ViewModel
-    {
-        private string _TestTextValue;
-        public string TestTextValue
-        {
-            get => _TestTextValue;
-            set => Set(ref _TestTextValue, value);
-        }
-    }
+    //public class TestMainViewModel: ViewModel
+    //{
+    //    private string _TestTextValue;
+    //    public string TestTextValue
+    //    {
+    //        get => _TestTextValue;
+    //        set => Set(ref _TestTextValue, value);
+    //    }
+    //}
 }

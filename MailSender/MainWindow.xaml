@@ -9,17 +9,17 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="{Binding TestTextValue}" Height="450" Width="800">
+        Title="Урок 3" Height="450" Width="800">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:TestMainViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <DockPanel>        
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
                 <MenuItem Header="Открыть"/>
-                <MenuItem Header="Закрыть"/>
+                <MenuItem Header="Закрыть"/> 
             </MenuItem>
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"/>
