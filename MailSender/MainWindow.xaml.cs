@@ -58,7 +58,7 @@ namespace MailSender
             }
             var password = new SecureString();
             
-            foreach (var password_char in PasswordTools.PasswordService.Decode(user.Password))
+            foreach (var password_char in SpamTools.lib.Service.PasswordService.Decode(user.Password))
             {
                 password.AppendChar(password_char);
             }

@@ -91,15 +91,20 @@
                         </ToolBar>
                     </ToolBarTray>
                     <Grid Grid.Row="1">
+                        
                         <Grid.DataContext>
                             <db:MailDatabaseDataContext/>
                         </Grid.DataContext>
-                        <DataGrid ItemsSource="{Binding Connection}"> <!--не работает-->
+
+                        <DataGrid ItemsSource="{Binding EmailRecipients}" AutoGenerateColumns="False" IsReadOnly="True"
+                                  HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="LightGray"
+                                  AlternationCount="2" AlternatingRowBackground="WhiteSmoke">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding EmailAdress}"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                        
                     </Grid>                    
                 </Grid>
             </TabItem>
