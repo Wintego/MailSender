@@ -1,6 +1,9 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using SpamTools.lib;
+using SpamTools.lib.Database;
+
 //using Microsoft.Practices.ServiceLocation;
 
 namespace MailSender.ViewModel
@@ -17,8 +20,10 @@ namespace MailSender.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
+            SimpleIoc.Default.Register(() => new MailDatabaseDataContext());
+            SimpleIoc.Default.Register<IDataService, DataServiceDB>();
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MainWindowViewModel>();
         }
 
         public MainViewModel Main
@@ -28,6 +33,8 @@ namespace MailSender.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
+
+        public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
         
         public static void Cleanup()
         {

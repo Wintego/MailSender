@@ -8,12 +8,11 @@
         xmlns:db="clr-namespace:SpamTools.lib.Database;assembly=SpamTools.lib"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:view="clr-namespace:MailSender.View"
         mc:Ignorable="d"
-        Title="Урок 3" Height="450" Width="800">
-
-    <!--<Window.DataContext>
-        <local:TestMainViewModel/>
-    </Window.DataContext>-->
+        Title="{Binding Title}" Height="450" Width="800" 
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+    
     <DockPanel>        
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -27,7 +26,7 @@
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom">
-            <TextBlock Text="Status bar"/>
+            <TextBlock Text="{Binding Status}"/>
         </StatusBar>
 
         <TabControl>
@@ -94,19 +93,19 @@
                         </ToolBar>
                     </ToolBarTray>
                     <Grid Grid.Row="1">
-                        
-                        <Grid.DataContext>
+                        <view:RecipientsView></view:RecipientsView>
+                        <!--<Grid.DataContext>
                             <db:MailDatabaseDataContext/>
-                        </Grid.DataContext>
+                        </Grid.DataContext>-->
 
-                        <DataGrid ItemsSource="{Binding EmailRecipients}" AutoGenerateColumns="False" IsReadOnly="True"
+                        <!--<DataGrid ItemsSource="{Binding Recipients}" AutoGenerateColumns="False" IsReadOnly="True"
                                   HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="LightGray"
                                   AlternationCount="2" AlternatingRowBackground="WhiteSmoke">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="Адрес" Binding="{Binding EmailAdress}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </DataGrid>-->
                         
                     </Grid>                    
                 </Grid>

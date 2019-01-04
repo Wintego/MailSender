@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpamTools.lib.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace SpamTools.lib
 {
-    public class DatabaseService
+    public interface IDataService
     {
+        IEnumerable<EmailRecipients> GetEmailRecipients();
     }
 }
