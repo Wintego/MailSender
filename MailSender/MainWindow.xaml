@@ -93,20 +93,13 @@
                         </ToolBar>
                     </ToolBarTray>
                     <Grid Grid.Row="1">
-                        <view:RecipientsView></view:RecipientsView>
-                        <!--<Grid.DataContext>
-                            <db:MailDatabaseDataContext/>
-                        </Grid.DataContext>-->
-
-                        <!--<DataGrid ItemsSource="{Binding Recipients}" AutoGenerateColumns="False" IsReadOnly="True"
-                                  HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="LightGray"
-                                  AlternationCount="2" AlternatingRowBackground="WhiteSmoke">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="Адрес" Binding="{Binding EmailAdress}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>-->
-                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <view:RecipientsView Grid.Column="0"/>
+                        <GridSplitter Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="3" Background="Transparent"/>
+                        <view:RecipientsEditorView Grid.Column="1"></view:RecipientsEditorView>
                     </Grid>                    
                 </Grid>
             </TabItem>

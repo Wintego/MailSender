@@ -90,6 +90,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\RecipientsEditorView.xaml.cs">
+      <DependentUpon>RecipientsEditorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
     <Page Include="Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RecipientsEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecipientsView.xaml">
       <SubType>Designer</SubType>

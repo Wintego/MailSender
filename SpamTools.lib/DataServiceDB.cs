@@ -17,9 +17,23 @@ namespace SpamTools.lib
             _DataBaseContext = DataBaseContext;
         }
 
+        
+
         public IEnumerable<EmailRecipients> GetEmailRecipients()
         {
             return new ObservableCollection<EmailRecipients>(_DataBaseContext.EmailRecipients);
+        }
+
+        public bool UpdateRecipien(EmailRecipients Recipient)
+        {
+            _DataBaseContext.SubmitChanges();
+            return true;
+        }
+        public bool CreateRecipien(EmailRecipients Recipient)
+        {
+            _DataBaseContext.EmailRecipients.InsertOnSubmit(Recipient);
+            _DataBaseContext.SubmitChanges();
+            return Recipient.Id != 0;
         }
     }
 }

@@ -10,5 +10,8 @@ namespace SpamTools.lib
     public interface IDataService
     {
         IEnumerable<EmailRecipients> GetEmailRecipients();
+
+        bool UpdateRecipien(EmailRecipients Recipient);
+        bool CreateRecipien(EmailRecipients Recipient);
     }
 }
