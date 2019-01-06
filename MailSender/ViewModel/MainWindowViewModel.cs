@@ -46,6 +46,7 @@ namespace MailSender.ViewModel
             UpdateRecipientsCommand = new RelayCommand(OnUpdateRecipientsCommandExecuted, CanUpdateRecipientsCommandExecute);
             CreateNewRecipientCommand = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(OnCreateNewRecipientCommandExecute);
             UpdateRecipientCommand = new GalaSoft.MvvmLight.Command.RelayCommand<EmailRecipients>(OnUpdateRecipientCommandExecuted, UpdateRecipientCommandExecute);
+            FindRecipientCommand = new RelayCommand(OnFindRecipientCommandExecute,true);
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -88,6 +89,30 @@ namespace MailSender.ViewModel
             var recipient = Recipient ?? _CurrentRecipient;
             if (recipient is null) return;  
             _DataService.UpdateRecipien(recipient);
+        }
+        //дз
+        private string _SearchValue;
+        public string SearchValue
+        {
+            get => _SearchValue;
+            set => Set(ref _SearchValue, value);
+        }
+        public ICommand FindRecipientCommand { get; }
+
+        public void OnFindRecipientCommandExecute()
+        {
+            if(SearchValue is null)
+                return;
+            Recipients.Clear();
+            var db_recipients = _DataService.GetEmailRecipients();
+            //var filter = db_recipients.Where(recipient => recipient.Name.Contains(SearchValue));
+            var filter = from recipient in db_recipients
+                where recipient.Name.Contains(SearchValue)
+                select recipient;
+            foreach (var recipient in filter)
+            {
+                Recipients.Add(recipient);
+            }
         }
     }
 }
