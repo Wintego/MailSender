@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpamTools.lib.Service;
 
 namespace SpamTools.lib.Data
 {
@@ -13,6 +14,7 @@ namespace SpamTools.lib.Data
             new Sender {Name = "Ivanov", Adress="ivanov@mail.ru"},
             new Sender {Name = "Petrov", Adress="petrov@mail.ru"},
             new Sender {Name = "Sidorov", Adress="sidorov@mail.ru"},
+            new Sender {Name = "Ya", Adress="berlin.22014@yandex.ru", Password = PasswordService.Encode("password")}
         };
     }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender", "MailSender\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpamTools.lib", "SpamTools.lib\SpamTools.lib.csproj", "{772FEDB7-183B-40F1-89D1-4415997A0D1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSendService.lib", "EmailSendService.lib\EmailSendService.lib.csproj", "{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{772FEDB7-183B-40F1-89D1-4415997A0D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772FEDB7-183B-40F1-89D1-4415997A0D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772FEDB7-183B-40F1-89D1-4415997A0D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

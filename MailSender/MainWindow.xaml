@@ -9,6 +9,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:view="clr-namespace:MailSender.View"
+        xmlns:controls="clr-namespace:MailSender.Controls"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800" 
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
@@ -36,10 +37,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ToolBarTray Grid.Row="0">
-                        <ToolBar>
+                    <ToolBarTray Grid.Row="0" IsLocked="True">
+                        <!--<ToolBar>
                             <TextBlock Text="Отправители: "/>
-                            <ComboBox Name="users" Width="150" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="0">
+                            <ComboBox Name="users" Width="150" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="0" SelectedItem="{Binding SelectedSender}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="Sender">
                                         <StackPanel Orientation="Horizontal">
@@ -59,10 +60,12 @@
                             <Button ToolTip="Удалить">
                                 <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
                             </Button>
-                        </ToolBar>
-                        <ToolBar Band="1" BandIndex="0">
+                        </ToolBar>-->
+                        
+                        <ToolBar Band="0" BandIndex="0">
+                            <controls:Otpraviteli/>
                             <TextBlock Text="Сервера: " MinWidth="78" TextAlignment="Right"/>
-                            <ComboBox Name="servers" Width="150" ItemsSource="{x:Static data:MailServers.servers}" DisplayMemberPath="Adress"/>
+                            <ComboBox Name="servers" Width="150" ItemsSource="{x:Static data:MailServers.servers}" DisplayMemberPath="Adress" SelectedItem="{Binding SelectedServer}"/>
                             <Button ToolTip="Добавить">
                                 <fa:ImageAwesome Icon="Plus" Width="13" Foreground="LightGreen"/>
                             </Button>
@@ -73,6 +76,7 @@
                                 <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
                             </Button>
                         </ToolBar>
+
                         <ToolBar Band="1" BandIndex="1">
                             <TextBlock Text="Список адресатов "/>
                             <Button ToolTip="Добавить">
@@ -129,7 +133,7 @@
                                 <TextBlock Text=" Запланировать"/>
                             </StackPanel>
                         </Button>
-                        <Button Click="Button_Click_1">
+                        <Button Command="{Binding SendMailCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Height="13" Icon="Send" Foreground="#FF0797CD"/>
                                 <TextBlock Text=" Отправить сразу"/>

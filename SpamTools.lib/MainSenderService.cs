@@ -10,46 +10,47 @@ using System.Diagnostics;
 
 namespace SpamTools.lib
 {
-    public class MainSenderService
-    {
-        private string _ServerAdress;
-        private int _Port;
-        private bool _UseSSL;
-        private string _UserName;
-        private SecureString _Password;
-        public string Subject { get; set; }
+    //public class MainSenderService
+    //{
+    //    private string _ServerAdress;
+    //    private int _Port;
+    //    private bool _UseSSL;
+    //    private string _FromLogin;
+    //    private SecureString _FromPassword;
+    //    public string Subject { get; set; }
 
-        public MainSenderService(string ServerAdress, int Port, bool UseSSL, string UserName, SecureString Password)
-        {
-            _ServerAdress = ServerAdress;
-            _Port = Port;
-            _UseSSL = UseSSL;
-            _UserName = UserName;
-            _Password = Password;
-        }
+    //    public MainSenderService(string ServerAdress, int Port, bool UseSSL, string FromLogin, SecureString FromPassword)
+    //    {
+    //        _ServerAdress = ServerAdress;
+    //        _Port = Port;
+    //        _UseSSL = UseSSL;
+    //        _FromLogin = FromLogin;
+    //        _FromPassword = FromPassword;
+    //    }
 
-        public void Send(string Subject, string Email, string Address)
-        {
-            using (var message = new MailMessage(_UserName, Address))
-            {
-                message.Subject = Subject;
-                message.Body = Email;
+    //    public void Send(string to, string subject, string body)
+    //    {
+    //        using (var message = new MailMessage(_FromLogin, to))
+    //        {
+    //            message.Subject = subject;
+    //            message.Body = body;
 
-                using (var client = new SmtpClient(_ServerAdress, _Port))
-                {
-                    client.EnableSsl = _UseSSL;
-                    client.Credentials = new NetworkCredential(_UserName, _Password);
-                    try
-                    {
-                        client.Send(message);
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.TraceError(ex.Message);
-                        Trace.TraceError(ex.ToString());
-                    }
-                }
-            }            
-        }
-    }
+    //            using (var client = new SmtpClient(_ServerAdress, _Port))
+    //            {
+    //                client.EnableSsl = _UseSSL;
+    //                client.Credentials = new NetworkCredential(_FromLogin, _FromPassword);
+    //                //client.UseDefaultCredentials = false;
+    //                try
+    //                {
+    //                    client.Send(message);
+    //                }
+    //                catch (Exception ex)
+    //                {
+    //                    Trace.TraceError(ex.Message);
+    //                    Trace.TraceError(ex.ToString());
+    //                }
+    //            }
+    //        }            
+    //    }
+    //}
 }

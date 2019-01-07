@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="MailSender.Controls.Otpraviteli"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.Controls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
+             mc:Ignorable="d">
+    <ToolBar>
+        <TextBlock Text="Отправители: "/>
+        <ComboBox Name="users" Width="150" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="0" SelectedItem="{Binding SelectedSender}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="data:Sender">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=":"/>
+                        <TextBlock Text="{Binding Adress}" Opacity="0.5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button ToolTip="Добавить">
+            <fa:ImageAwesome Icon="Plus" Width="13" Foreground="LightGreen"/>
+        </Button>
+        <Button ToolTip="Редактировать">
+            <fa:ImageAwesome Icon="Pencil" Width="13" Foreground="LightSalmon"/>
+        </Button>
+        <Button ToolTip="Удалить">
+            <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
+        </Button>
+    </ToolBar>
+</UserControl>

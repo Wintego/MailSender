@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.CommandWpf;
 using SpamTools.lib;
+using SpamTools.lib.Data;
 using SpamTools.lib.Database;
 using SpamTools.lib.MVVM;
+using SpamTools.lib.Service;
 using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace MailSender.ViewModel
@@ -47,6 +51,7 @@ namespace MailSender.ViewModel
             CreateNewRecipientCommand = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(OnCreateNewRecipientCommandExecute);
             UpdateRecipientCommand = new GalaSoft.MvvmLight.Command.RelayCommand<EmailRecipients>(OnUpdateRecipientCommandExecuted, UpdateRecipientCommandExecute);
             FindRecipientCommand = new RelayCommand(OnFindRecipientCommandExecute,true);
+            SendMailCommand = new RelayCommand(OnSendMailCommandExecute, true);
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -71,7 +76,7 @@ namespace MailSender.ViewModel
 
         private void OnCreateNewRecipientCommandExecute()
         {
-            var recipient = new EmailRecipients {Name = "Получатель", EmailAdress = "user@com"};
+            var recipient = new EmailRecipients {Name = "3841832", EmailAdress = "3841832@gmail.com" };
             if (_DataService.CreateRecipien(recipient))
             {
                 CurrentRecipient = recipient;
@@ -90,7 +95,7 @@ namespace MailSender.ViewModel
             if (recipient is null) return;  
             _DataService.UpdateRecipien(recipient);
         }
-        //дз
+        //дз из методички
         private string _SearchValue;
         public string SearchValue
         {
@@ -110,9 +115,32 @@ namespace MailSender.ViewModel
                 where recipient.Name.Contains(SearchValue)
                 select recipient;
             foreach (var recipient in filter)
-            {
                 Recipients.Add(recipient);
-            }
         }
+        //дз из сайта
+        public MailServer SelectedServer { set; get; }
+        public Sender SelectedSender { set; get; }
+        public ICommand SendMailCommand { get; }
+
+        private void OnSendMailCommandExecute()
+        {
+
+            var password = new SecureString();
+            foreach (var password_char in SpamTools.lib.Service.PasswordService.Decode(SelectedSender.Password))
+                password.AppendChar(password_char);
+
+            var from = SelectedSender.Adress;
+            var to = CurrentRecipient.EmailAdress;
+            var senderService = new EmailSendService.lib.SenderService(
+                SelectedServer.Adress,
+                SelectedServer.Port,
+                SelectedServer.UseSSL,
+                SelectedSender.Adress,
+                password
+                );
+            var p2 = PasswordService.Decode(SelectedSender.Password);
+            Status = senderService.Send(to,"subject","body");
+        }
+
     }
 }

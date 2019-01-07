@@ -80,6 +80,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppConfigClass.cs" />
+    <Compile Include="Controls\Otpraviteli.xaml.cs">
+      <DependentUpon>Otpraviteli.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DBClass.cs" />
     <Compile Include="EmailSendServiceClass.cs" />
     <Compile Include="SchedulerClass.cs" />
@@ -97,6 +100,10 @@
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfTestMailSender.cs" />
+    <Page Include="Controls\Otpraviteli.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +162,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmailSendService.lib\EmailSendService.lib.csproj">
+      <Project>{1c081ed6-b778-44e9-b0d8-36faab09a87a}</Project>
+      <Name>EmailSendService.lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
