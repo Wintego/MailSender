@@ -21,19 +21,18 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock>Выберите получателей:</TextBlock>
-        <ComboBox ItemsSource="{Binding Recipients}" Name="To">
-            <ComboBox.ItemTemplate>
+        <xwt:CheckComboBox ItemsSource="{Binding Recipients}" Name="To">
+            <xwt:CheckComboBox.ItemTemplate>
                 <DataTemplate DataType="data:Sender">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox></CheckBox>
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock> </TextBlock>
                         <TextBlock Text="{Binding Adress}"></TextBlock>
                     </StackPanel>
                     
                 </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+            </xwt:CheckComboBox.ItemTemplate>
+        </xwt:CheckComboBox>
         <TextBlock>Укажите тему</TextBlock>
         <TextBox Name="Subject"></TextBox>
         <TextBlock>Укажите текст письма</TextBlock>
