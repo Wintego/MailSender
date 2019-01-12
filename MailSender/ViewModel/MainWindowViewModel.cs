@@ -145,7 +145,7 @@ namespace MailSender.ViewModel
 
         private void OnAddNewEmailCommandExecute()
         {
-
+            var a = new View.NewEmailWindowView().ShowDialog();
         }
     }
 }

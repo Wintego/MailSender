@@ -5,10 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender.View"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
         mc:Ignorable="d"
-        Title="Добавить новое задание" Height="450" Width="800">
-    <Grid>
-        <TextBlock>Выберите время отправки:</TextBlock>
-         <xwt:DateTimePicker></xwt:DateTimePicker>
-    </Grid>
+        Title="Добавить новое задание" Height="Auto" Width="300"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+    <StackPanel Margin="5">
+        <TextBlock>Выберите дату и время отправки:</TextBlock>
+        <xwt:DateTimePicker Name="DateTimePicker"></xwt:DateTimePicker>
+        <TextBlock>Выберите отправителя:</TextBlock>
+        <ComboBox ItemsSource="{x:Static data:Senders.List}" Name="From">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="data:Sender">
+                    <TextBlock Text="{Binding Adress}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock>Выберите получателей:</TextBlock>
+        <ComboBox ItemsSource="{Binding Recipients}" Name="To">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="data:Sender">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox></CheckBox>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock> </TextBlock>
+                        <TextBlock Text="{Binding Adress}"></TextBlock>
+                    </StackPanel>
+                    
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock>Укажите тему</TextBlock>
+        <TextBox Name="Subject"></TextBox>
+        <TextBlock>Укажите текст письма</TextBlock>
+        <TextBox Name="Content" Height="250"></TextBox>
+        <Button Content="Добавить задание"/>
+        <Button Content="Отменить"/>
+    </StackPanel>
 </Window>

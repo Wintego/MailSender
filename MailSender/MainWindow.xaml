@@ -118,7 +118,7 @@
                             <StackPanel>
                                 <Calendar/>
                                 <!--<xwt:TimePicker Name="timePicker"/>-->
-                                <Button Content="Добавить задание" Command=""></Button>
+                                <Button Content="Добавить задание" Command="{Binding AddNewEmailCommand}"></Button>
                                 <ListView Height="90" Name="Zadaniya">
                                     <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
                                     <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>

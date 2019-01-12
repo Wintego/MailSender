@@ -9,10 +9,11 @@ namespace SpamTools.lib.Data
 {
     class Email
     {
-        public DateTime Time { get; }
+        public DateTime Time { get; set; }
+        public Sender From { get; set; }
         public EmailRecipients To { get; }
-        public string Subject { get; }
-        public string Content { get; }
+        public string Subject { get; set; }
+        public string Content { get; set; }
 
         public Email(DateTime time, EmailRecipients to, string subject, string content)
         {
