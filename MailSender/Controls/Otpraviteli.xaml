@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:MailSender.Controls"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
-             mc:Ignorable="d">
-    <ToolBar>
+             mc:Ignorable="d" d:DesignWidth="150" d:DesignHeight="20"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <!--<ToolBar>
         <TextBlock Text="Отправители: "/>
         <ComboBox Name="users" Width="150" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="0" SelectedItem="{Binding SelectedSender}">
             <ComboBox.ItemTemplate>
@@ -29,5 +30,25 @@
         <Button ToolTip="Удалить">
             <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
         </Button>
-    </ToolBar>
+    </ToolBar>-->
+    <DockPanel>
+        <TextBlock Text="{Binding PanelText, RelativeSource={RelativeSource AncestorType=local:Otpraviteli}}"/>
+        
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+            <Button ToolTip="Добавить" Command="{Binding CreateItemCommand}" CommandParameter="{Binding SelectedItem}">
+                <fa:ImageAwesome Icon="Plus" Width="13" Foreground="LightGreen"/>
+            </Button>
+            <Button ToolTip="Редактировать" Command="{Binding EditItemCommand}" CommandParameter="{Binding SelectedItem}">
+                <fa:ImageAwesome Icon="Pencil" Width="13" Foreground="LightSalmon"/>
+            </Button>
+            <Button ToolTip="Удалить" Command="{Binding RemoveItemCommand}" CommandParameter="{Binding SelectedItem}">
+                <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
+            </Button>
+        </StackPanel>
+        <ComboBox ItemsSource="{Binding ItemsSource}" 
+                  SelectedIndex="{Binding SelectedIndex}" 
+                  SelectedItem="{Binding SelectedItem}" 
+                  ItemTemplate="{Binding ItemTemplate}"/>
+    </DockPanel>
+
 </UserControl>

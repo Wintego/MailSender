@@ -37,7 +37,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ToolBarTray Grid.Row="0" IsLocked="True">
+                    <ToolBarTray Grid.Row="0">
                         <!--<ToolBar>
                             <TextBlock Text="Отправители: "/>
                             <ComboBox Name="users" Width="150" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="0" SelectedItem="{Binding SelectedSender}">
@@ -63,7 +63,18 @@
                         </ToolBar>-->
 
                         <ToolBar Band="0" BandIndex="0">
-                            <controls:Otpraviteli/>
+                            <controls:Otpraviteli PanelText="Отправители" x:Name="Otpraviteli" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="3"
+                                                  CreateItemCommand="" EditItemCommand="" RemoveItemCommand="">
+                                <controls:Otpraviteli.ItemTemplate>
+                                    <DataTemplate DataType="data:Sender">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text=":"/>
+                                            <TextBlock Text="{Binding Adress}" Opacity="0.5"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </controls:Otpraviteli.ItemTemplate>
+                            </controls:Otpraviteli>
                             <TextBlock Text="Сервера: " MinWidth="78" TextAlignment="Right"/>
                             <ComboBox Name="servers" Width="150" ItemsSource="{x:Static data:MailServers.servers}" DisplayMemberPath="Adress" SelectedItem="{Binding SelectedServer}"/>
                             <Button ToolTip="Добавить">
