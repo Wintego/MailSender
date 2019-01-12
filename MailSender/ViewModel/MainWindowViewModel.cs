@@ -52,6 +52,7 @@ namespace MailSender.ViewModel
             UpdateRecipientCommand = new GalaSoft.MvvmLight.Command.RelayCommand<EmailRecipients>(OnUpdateRecipientCommandExecuted, UpdateRecipientCommandExecute);
             FindRecipientCommand = new RelayCommand(OnFindRecipientCommandExecute,true);
             SendMailCommand = new RelayCommand(OnSendMailCommandExecute, true);
+            AddNewEmailCommand = new RelayCommand(OnAddNewEmailCommandExecute, true);
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -95,7 +96,6 @@ namespace MailSender.ViewModel
             if (recipient is null) return;  
             _DataService.UpdateRecipien(recipient);
         }
-        //дз из методички
         private string _SearchValue;
         public string SearchValue
         {
@@ -117,11 +117,10 @@ namespace MailSender.ViewModel
             foreach (var recipient in filter)
                 Recipients.Add(recipient);
         }
-        //дз из сайта
+
         public MailServer SelectedServer { set; get; }
         public Sender SelectedSender { set; get; }
         public ICommand SendMailCommand { get; }
-
         private void OnSendMailCommandExecute()
         {
 
@@ -142,5 +141,11 @@ namespace MailSender.ViewModel
             Status = senderService.Send(to,"subject","body");
         }
 
+        public ICommand AddNewEmailCommand { get; set; }
+
+        private void OnAddNewEmailCommandExecute()
+        {
+
+        }
     }
 }

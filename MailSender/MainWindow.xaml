@@ -13,13 +13,13 @@
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800" 
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
-    
-    <DockPanel>        
+
+    <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
                 <MenuItem Header="Открыть"/>
-                <MenuItem Header="Закрыть"/> 
+                <MenuItem Header="Закрыть"/>
             </MenuItem>
             <MenuItem Header="Помощь">
                 <MenuItem Header="О программе"/>
@@ -61,7 +61,7 @@
                                 <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
                             </Button>
                         </ToolBar>-->
-                        
+
                         <ToolBar Band="0" BandIndex="0">
                             <controls:Otpraviteli/>
                             <TextBlock Text="Сервера: " MinWidth="78" TextAlignment="Right"/>
@@ -91,7 +91,7 @@
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик "/>
-                            <Button ToolTip="Перейти в планировщик" Click="PlannerClick">                                
+                            <Button ToolTip="Перейти в планировщик" Click="PlannerClick">
                                 <Image Source="Resources/clock.png" Height="13" Width="13"/>
                             </Button>
                         </ToolBar>
@@ -104,7 +104,7 @@
                         <view:RecipientsView Grid.Column="0"/>
                         <GridSplitter Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="3" Background="Transparent"/>
                         <view:RecipientsEditorView Grid.Column="1"></view:RecipientsEditorView>
-                    </Grid>                    
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Планировщик" Name="planner">
@@ -117,7 +117,12 @@
                         <GroupBox Header="Дата/время">
                             <StackPanel>
                                 <Calendar/>
-                                <xwt:TimePicker Name="timePicker"/>
+                                <!--<xwt:TimePicker Name="timePicker"/>-->
+                                <Button Content="Добавить задание" Command=""></Button>
+                                <ListView Height="90" Name="Zadaniya">
+                                    <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
+                                    <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
+                                </ListView>
                             </StackPanel>
                         </GroupBox>
                         <Button Margin="0,5,0,5">
@@ -149,9 +154,13 @@
             </TabItem>
             <TabItem Header="Статистика">
                 <Grid>
-                    <TextBox Margin="85,35,391,296" Text="{Binding TestTextValue, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Margin="85,72,391,259" Text="{Binding TestTextValue}"></TextBlock> 
-                </Grid>                
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="88*"/>
+                        <ColumnDefinition Width="305*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Margin="85,35,391,296" Text="{Binding TestTextValue, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
+                    <TextBlock Margin="85,72,391,259" Text="{Binding TestTextValue}" Grid.ColumnSpan="2"></TextBlock>
+                </Grid>
             </TabItem>
         </TabControl>
 

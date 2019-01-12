@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="MailSender.Controls.ListViewItemScheduler_custom"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.Controls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="64" d:DesignWidth="179"
+             DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="159"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock>
+                <TextBlock>Время: </TextBlock>
+                <TextBlock MaxWidth="118"></TextBlock>
+            </TextBlock>
+            <TextBlock Text="Кому: "/>
+            <TextBlock Text="Тема: "/>
+            <TextBlock Text="Текст: "/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <Button>
+                <fa:ImageAwesome Icon="Pencil" Foreground="LightSalmon"/>
+            </Button>
+            <Button>
+                <fa:ImageAwesome Icon="MinusCircle" Foreground="LightCoral"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

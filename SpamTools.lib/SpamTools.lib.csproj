@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MailDatabase.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Email.cs" />
     <Compile Include="Data\MailServer.cs" />
     <Compile Include="Data\MailServers.cs" />
     <Compile Include="Data\Sender.cs" />

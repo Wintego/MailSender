@@ -80,6 +80,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppConfigClass.cs" />
+    <Compile Include="Controls\ListViewItemScheduler-custom.xaml.cs">
+      <DependentUpon>ListViewItemScheduler-custom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListViewItemScheduler.xaml.cs">
+      <DependentUpon>ListViewItemScheduler.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Otpraviteli.xaml.cs">
       <DependentUpon>Otpraviteli.xaml</DependentUpon>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\NewEmailWindowView.xaml.cs">
+      <DependentUpon>NewEmailWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RecipientsEditorView.xaml.cs">
       <DependentUpon>RecipientsEditorView.xaml</DependentUpon>
     </Compile>
@@ -100,6 +109,14 @@
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfTestMailSender.cs" />
+    <Page Include="Controls\ListViewItemScheduler-custom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListViewItemScheduler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Otpraviteli.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +140,10 @@
     <Page Include="Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NewEmailWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecipientsEditorView.xaml">
       <SubType>Designer</SubType>

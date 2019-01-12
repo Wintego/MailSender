@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MailSender.Controls.ListViewItemScheduler"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.Controls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="179">
+    <StackPanel Orientation="Horizontal">
+            <Button Width="20">
+                <fa:ImageAwesome Icon="Pencil" Foreground="LightSalmon"/>
+            </Button>
+        <TextBox Width="139"></TextBox>
+        <Button>
+            <fa:ImageAwesome Icon="MinusCircle" Foreground="LightCoral"/>
+        </Button>
+    </StackPanel>
+</UserControl>
