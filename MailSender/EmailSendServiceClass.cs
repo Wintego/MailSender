@@ -1,51 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 using System.Security;
+using System.Windows;
+using SpamTools.lib.Data;
+using SpamTools.lib.Database;
 
 namespace MailSender
 {
-    static class EmailSendServiceClass
-    {        
-        //public static void Send(MainWindow mw)
-        //{
-        //    var start = mw.redaktor.Document.ContentStart;
-        //    var end = mw.redaktor.Document.ContentEnd;
-        //    int difference = start.GetOffsetToPosition(end);
-        //    if (difference <= 4)
-        //    {
-        //        new SendEndWindow("Введите текст письма").ShowDialog();
-        //        mw.editLetter.IsSelected = true;
-        //        return;
-        //    }
+    class EmailSendServiceClass
+    {
+        #region vars
+        private string strLogin;
+        private string strPassword;
+        private string strSmtp = "smtp.yandex.ru";
+        private int iSmtpPort = 25;
+        private string strBody;
+        private string strSubject;
+        #endregion
+        public EmailSendServiceClass(string sLogin, string sPassword)
+        {
+            strLogin = sLogin;
+            strPassword = sPassword;
+        }
+        private void SendMail(string mail, string name)
+        {
+            using (MailMessage mm = new MailMessage(strLogin, mail))
+            {
+                mm.Subject = strSubject;
+                mm.Body = "Hello world!";
+                mm.IsBodyHtml = false;
+                SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
+                sc.EnableSsl = true;
+                sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+                sc.UseDefaultCredentials = false;
+                sc.Credentials = new NetworkCredential(strLogin, strPassword);
+                try
+                {
+                    sc.Send(mm);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
+                }
+            }
+        }//private void SendMail(string mail, string name)
+        public void SendMails(ObservableCollection<Sender> emails)
+        {
+            foreach (Sender email in emails)
+            {
+                SendMail(email.Adress, email.Name);
+            }
+        }
 
-
-        //    var server = mw.servers.SelectedItem as SpamTools.lib.Data.MailServer;
-        //    if (server == null)
-        //    {
-        //        new SendEndWindow("Сервер не выбран").ShowDialog();
-        //        return;
-        //    }
-
-        //    var user = mw.users.SelectedItem as SpamTools.lib.Data.Sender;
-        //    if (user == null)
-        //    {
-        //        new SendEndWindow("Отправитель не выбран").ShowDialog();
-        //        return;
-        //    }
-        //    var password = new SecureString();
-
-        //    foreach (var password_char in SpamTools.lib.Service.PasswordService.Decode(user.Password))
-        //    {
-        //        password.AppendChar(password_char);
-        //    }
-
-        //    var send_mail_service = new SpamTools.lib.MainSenderService(server.Adress, server.Port, server.UseSSL, user.Adress, password);
-        //    send_mail_service.Send("Subject", "Email body", "email@server.com");
-        //}
-    }
+    } //private void SendMail(string mail, string name)
 }

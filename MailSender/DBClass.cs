@@ -8,5 +8,13 @@ namespace MailSender
 {
     class DBClass
     {
+        //private EmailsDataContext emails = new EmailsDataContext();
+        //public IQueryable<Email> Emails
+        //{
+        //    get
+        //    {
+        //        return from c in emails.Emails select c;
+        //    }
+        //}
     }
 }

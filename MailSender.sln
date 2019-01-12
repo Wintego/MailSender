@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpamTools.lib", "SpamTools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSendService.lib", "EmailSendService.lib\EmailSendService.lib.csproj", "{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8BB062CE-B09C-4B1F-9E7B-612FA41317E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpamTools.lib.Tests", "SpamTools.lib.Tests\SpamTools.lib.Tests.csproj", "{F28BF459-9A95-4B66-AC0A-D50D9216108E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C081ED6-B778-44E9-B0D8-36FAAB09A87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F28BF459-9A95-4B66-AC0A-D50D9216108E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F28BF459-9A95-4B66-AC0A-D50D9216108E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F28BF459-9A95-4B66-AC0A-D50D9216108E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F28BF459-9A95-4B66-AC0A-D50D9216108E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F28BF459-9A95-4B66-AC0A-D50D9216108E} = {8BB062CE-B09C-4B1F-9E7B-612FA41317E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5A42F05-4853-4892-8AB8-28B2CD3F0A5E}

@@ -44,5 +44,11 @@
     <Compile Include="SenderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpamTools.lib\SpamTools.lib.csproj">
+      <Project>{772FEDB7-183B-40F1-89D1-4415997A0D1E}</Project>
+      <Name>SpamTools.lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

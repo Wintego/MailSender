@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SpamTools.lib.Data;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -53,6 +55,13 @@ namespace EmailSendService.lib
             }
 
             return response;
+        }
+        public void SendMails(ObservableCollection<Sender> emails)
+        {
+            foreach (Sender email in emails)
+            {
+                Send(email.Adress, email.Name, "");
+            }
         }
     }
 }

@@ -117,7 +117,7 @@
                         <GroupBox Header="Дата/время">
                             <StackPanel>
                                 <Calendar/>
-                                <xwt:TimePicker Name="timePicker"/>                                
+                                <xwt:TimePicker Name="timePicker"/>
                             </StackPanel>
                         </GroupBox>
                         <Button Margin="0,5,0,5">
