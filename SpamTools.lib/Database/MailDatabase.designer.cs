@@ -182,6 +182,11 @@ namespace SpamTools.lib.Database
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
+
+        public override string ToString()
+        {
+            return EmailAdress;
+        }
+    }
 }
 #pragma warning restore 1591

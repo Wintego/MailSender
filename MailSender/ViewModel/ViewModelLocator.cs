@@ -1,6 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using MailSender.View;
 using SpamTools.lib;
 using SpamTools.lib.Database;
 
@@ -24,6 +25,7 @@ namespace MailSender.ViewModel
             SimpleIoc.Default.Register<IDataService, DataServiceDB>();
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<MainWindowViewModel>();
+            SimpleIoc.Default.Register<NewEmailWindowView>();
         }
 
         public MainViewModel Main

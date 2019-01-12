@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MailSender.View"
         xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
+        xmlns:database="clr-namespace:SpamTools.lib.Database;assembly=SpamTools.lib"
         mc:Ignorable="d"
         Title="Добавить новое задание" Height="Auto" Width="300"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
@@ -21,22 +22,22 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock>Выберите получателей:</TextBlock>
-        <xwt:CheckComboBox ItemsSource="{Binding Recipients}" Name="To">
+        <xwt:CheckComboBox ItemsSource="{Binding Recipients}">
             <xwt:CheckComboBox.ItemTemplate>
-                <DataTemplate DataType="data:Sender">
+                <DataTemplate DataType="database:EmailRecipients">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name}"/>
-                        <TextBlock> </TextBlock>
-                        <TextBlock Text="{Binding Adress}"></TextBlock>
+                        <TextBlock Text=" ("/>
+                        <TextBlock Text="{Binding EmailAdress}"></TextBlock>
+                        <TextBlock Text=")"/>
                     </StackPanel>
-                    
                 </DataTemplate>
             </xwt:CheckComboBox.ItemTemplate>
         </xwt:CheckComboBox>
         <TextBlock>Укажите тему</TextBlock>
         <TextBox Name="Subject"></TextBox>
         <TextBlock>Укажите текст письма</TextBlock>
-        <TextBox Name="Content" Height="250"></TextBox>
+        <TextBox Name="Content" Height="250"/>
         <Button Content="Добавить задание"/>
         <Button Content="Отменить"/>
     </StackPanel>

@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\MailDatabase.cs">
+      <DependentUpon>MailDatabase.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataServiceDB.cs" />
     <Compile Include="Database\MailDatabase.designer.cs">
       <AutoGen>True</AutoGen>

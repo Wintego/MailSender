@@ -7,7 +7,7 @@ using SpamTools.lib.Database;
 
 namespace SpamTools.lib.Data
 {
-    class Email
+    public class Email
     {
         public DateTime Time { get; set; }
         public Sender From { get; set; }
