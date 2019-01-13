@@ -75,17 +75,15 @@
                                     </DataTemplate>
                                 </controls:Otpraviteli.ItemTemplate>
                             </controls:Otpraviteli>
-                            <TextBlock Text="Сервера: " MinWidth="78" TextAlignment="Right"/>
-                            <ComboBox Name="servers" Width="150" ItemsSource="{x:Static data:MailServers.servers}" DisplayMemberPath="Adress" SelectedItem="{Binding SelectedServer}"/>
-                            <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Icon="Plus" Width="13" Foreground="LightGreen"/>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Icon="Pencil" Width="13" Foreground="LightSalmon"/>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
-                            </Button>
+                            <controls:Servers PanelText="Сервера" ItemsSource="{x:Static data:MailServers.servers}">
+                                <controls:Servers.ItemTemplate>
+                                    <DataTemplate DataType="data:MailServer">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Adress}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </controls:Servers.ItemTemplate>
+                            </controls:Servers>
                         </ToolBar>
 
                         <ToolBar Band="1" BandIndex="1">
@@ -100,7 +98,7 @@
                                 <fa:ImageAwesome Icon="Remove" Width="13" Foreground="LightCoral"/>
                             </Button>
                         </ToolBar>
-                        <ToolBar>
+                        <ToolBar Band="1">
                             <TextBlock Text="Перейти в планировщик "/>
                             <Button ToolTip="Перейти в планировщик" Click="PlannerClick">
                                 <Image Source="Resources/clock.png" Height="13" Width="13"/>

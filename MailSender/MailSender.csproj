@@ -104,6 +104,9 @@
     <Compile Include="Controls\Otpraviteli.xaml.cs">
       <DependentUpon>Otpraviteli.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Servers.xaml.cs">
+      <DependentUpon>Servers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DBClass.cs" />
     <Compile Include="EmailSendServiceClass.cs" />
     <Compile Include="SchedulerClass.cs" />
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Otpraviteli.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Servers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

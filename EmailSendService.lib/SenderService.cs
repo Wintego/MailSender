@@ -8,7 +8,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using SpamTools.lib.Database;
 
 namespace EmailSendService.lib
 {
@@ -30,9 +32,9 @@ namespace EmailSendService.lib
             _FromPassword = FromPassword;
         }
 
-        public String Send(string to, string subject, string body)
+        public void Send(string to, string subject, string body)
         {
-            string response = default(string);
+            //string response = default(string);
             using (var message = new MailMessage(_FromLogin, to))
             {
                 message.Subject = subject;
@@ -45,22 +47,23 @@ namespace EmailSendService.lib
                     try
                     {
                         client.Send(message);
-                        response = $"Письмо успешно отправлено на почту {to}";
+                        //response = $"Письмо успешно отправлено на почту {to}";
                     }
                     catch (Exception ex)
                     {
-                        response = "Ошибка: "+ex.Message;
+                        //response = "Ошибка: "+ex.Message;
                     }
                 }
             }
-
-            return response;
+            //return response;
         }
-        public void SendMails(ObservableCollection<Sender> emails)
+        public void SendMails(string subject, string body, IEnumerable<EmailRecipients> recipients)
         {
-            foreach (Sender email in emails)
+            foreach (var recipient in recipients)
             {
-                Send(email.Adress, email.Name, "");
+                var sending_thread = new Thread(() => Send(recipient.EmailAdress, subject, body));
+                sending_thread.IsBackground = true;
+                sending_thread.Start();
             }
         }
     }
