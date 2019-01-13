@@ -57,6 +57,12 @@ namespace EmailSendService.lib
             }
             //return response;
         }
+        /// <summary>
+        /// массовое отправление писем
+        /// </summary>
+        /// <param name="subject">тема письма</param>
+        /// <param name="body">тело письма</param>
+        /// <param name="recipients">получатели письма</param>
         public void SendMails(string subject, string body, IEnumerable<EmailRecipients> recipients)
         {
             foreach (var recipient in recipients)
