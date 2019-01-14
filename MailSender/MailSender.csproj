@@ -109,7 +109,7 @@
     </Compile>
     <Compile Include="DBClass.cs" />
     <Compile Include="EmailSendServiceClass.cs" />
-    <Compile Include="SchedulerClass.cs" />
+    <Compile Include="Scheduler.cs" />
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
