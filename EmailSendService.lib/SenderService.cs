@@ -63,13 +63,20 @@ namespace EmailSendService.lib
         /// <param name="subject">тема письма</param>
         /// <param name="body">тело письма</param>
         /// <param name="recipients">получатели письма</param>
-        public void SendMails(string subject, string body, IEnumerable<EmailRecipients> recipients)
+        public void SendParallel(string subject, string body, IEnumerable<EmailRecipients> recipients)
         {
             foreach (var recipient in recipients)
             {
                 var sending_thread = new Thread(() => Send(recipient.EmailAdress, subject, body));
                 sending_thread.IsBackground = true;
                 sending_thread.Start();
+            }
+        }
+        public void Send(string subject, string body, IEnumerable<EmailRecipients> recipients)
+        {
+            foreach (var recipient in recipients)
+            {
+                Send(subject, body, recipient.EmailAdress);
             }
         }
     }

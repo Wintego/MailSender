@@ -138,7 +138,7 @@ namespace MailSender.ViewModel
                 password
                 );
             var p2 = PasswordService.Decode(SelectedSender.Password);
-            Status = senderService.Send(to,"subject","body");
+            senderService.Send(to, "subject", "body");
         }
 
         public ICommand AddNewEmailCommand { get; set; }
