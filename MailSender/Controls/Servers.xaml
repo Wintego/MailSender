@@ -15,11 +15,7 @@
             <Button ToolTip="Добавить" Command="{Binding CreateItemCommand}" CommandParameter="{Binding SelectedItem}">
                 <fa:ImageAwesome Icon="Plus" Width="13" Foreground="LightGreen" />
             </Button>
-            hghjghhg
-            
-            
-            
-            45885<Button ToolTip="Редактировать" Command="{Binding EditItemCommand}"
+            <Button ToolTip="Редактировать" Command="{Binding EditItemCommand}"
                     CommandParameter="{Binding SelectedItem}">
                 <fa:ImageAwesome Icon="Pencil" Width="13" Foreground="LightSalmon" />
             </Button>
