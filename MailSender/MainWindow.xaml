@@ -11,8 +11,7 @@
         xmlns:view="clr-namespace:MailSender.View"
         xmlns:controls="clr-namespace:MailSender.Controls"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800" 
-        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+        Title="{Binding Title}" Height="450" Width="800">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -85,7 +84,6 @@
                                 </controls:Servers.ItemTemplate>
                             </controls:Servers>
                         </ToolBar>
-
                         <ToolBar Band="1" BandIndex="1">
                             <TextBlock Text="Список адресатов "/>
                             <Button ToolTip="Добавить">
@@ -126,7 +124,6 @@
                         <GroupBox Header="Дата/время">
                             <StackPanel>
                                 <Calendar/>
-                                <!--<xwt:TimePicker Name="timePicker"/>-->
                                 <Button Content="Добавить задание" Command="{Binding AddNewEmailCommand}"></Button>
                                 <ListView Height="90" Name="Zadaniya">
                                     <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
@@ -155,20 +152,7 @@
                         </Button>
                     </StackPanel>
                     <GroupBox Header="Задания планировщика" Grid.Column="1">
-                        <ListBox ItemsSource="{Binding Scheduler.Tasks}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="data:SchedulerTask">
-                                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
-                                        <StackPanel>
-                                            <TextBlock>
-                                                <TextBlock>Время</TextBlock>
-                                                <TextBlock Text="{Binding DateTime}"></TextBlock>
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <ListBox ItemsSource="{Binding MainWindowModel.Scheduler.Tasks, Source={StaticResource Locator}}"/>
                     </GroupBox>
                 </Grid>
             </TabItem>

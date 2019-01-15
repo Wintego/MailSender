@@ -19,8 +19,13 @@ namespace MailSender
         private readonly ObservableCollection<SchedulerTask> _Tasks;
         public ObservableCollection<SchedulerTask> Tasks => _Tasks;
 
+        public ObservableCollection<string> strs { get; set; } = 
+            new ObservableCollection<string>();
+
         public Scheduler()
         {
+            strs.Add("111");
+            strs.Add("222");
             _Tasks = new ObservableCollection<SchedulerTask>
             {
                 new SchedulerTask
