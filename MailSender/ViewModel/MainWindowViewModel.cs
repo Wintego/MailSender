@@ -23,7 +23,7 @@ namespace MailSender.ViewModel
     {
         private readonly IDataService _DataService;
         private readonly Scheduler _Scheduler = new Scheduler();
-        public Scheduler Scheduler => Scheduler;
+        public Scheduler Scheduler => _Scheduler;
         private string _Title = "Рассыльщик почты";
         public string Title
         {

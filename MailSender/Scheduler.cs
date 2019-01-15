@@ -17,7 +17,7 @@ namespace MailSender
     public class Scheduler
     {
         private readonly ObservableCollection<SchedulerTask> _Tasks;
-        public ObservableCollection<SchedulerTask> Tasks => Tasks;
+        public ObservableCollection<SchedulerTask> Tasks => _Tasks;
 
         public Scheduler()
         {
@@ -75,10 +75,9 @@ namespace MailSender
                         Name = "Sender1",
                         Password = "pas"
                     },
-                    Mail = new Mail("subject1", "body1"),
+                    Mail = new Mail("subject2", "body2"),
                 }
             };
-
         }
 
         public Scheduler(IEnumerable<SchedulerTask> tasks)

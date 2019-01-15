@@ -154,6 +154,22 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
+                    <GroupBox Header="Задания планировщика" Grid.Column="1">
+                        <ListBox ItemsSource="{Binding Scheduler.Tasks}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="data:SchedulerTask">
+                                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+                                        <StackPanel>
+                                            <TextBlock>
+                                                <TextBlock>Время</TextBlock>
+                                                <TextBlock Text="{Binding DateTime}"></TextBlock>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Редактор писем" Name="editLetter">
