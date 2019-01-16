@@ -12,7 +12,7 @@
             <TextBox IsReadOnly="True" Text="{Binding Id}"/>
         </GroupBox>
         <GroupBox Header="Имя">
-            <TextBox Validation.Error=""  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
         </GroupBox>
         <GroupBox Header="Адрес">
             <TextBox Text="{Binding EmailAdress, UpdateSourceTrigger=PropertyChanged}"/>

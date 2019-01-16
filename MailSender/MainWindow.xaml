@@ -163,12 +163,7 @@
             </TabItem>
             <TabItem Header="Статистика">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="88*"/>
-                        <ColumnDefinition Width="305*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Margin="85,35,391,296" Text="{Binding TestTextValue, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
-                    <TextBlock Margin="85,72,391,259" Text="{Binding TestTextValue}" Grid.ColumnSpan="2"></TextBlock>
+                    <ListBox ItemsSource="{Binding MainWindowModel.Scheduler.Tasks, Source={StaticResource Locator}}"/>
                 </Grid>
             </TabItem>
         </TabControl>
