@@ -11,7 +11,8 @@
         xmlns:view="clr-namespace:MailSender.View"
         xmlns:controls="clr-namespace:MailSender.Controls"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding Title}" Height="450" Width="800"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -125,10 +126,10 @@
                             <StackPanel>
                                 <Calendar/>
                                 <Button Content="Добавить задание" Command="{Binding AddNewEmailCommand}"></Button>
-                                <ListView Height="90" Name="Zadaniya">
+                                <!--<ListView Height="90" Name="Zadaniya">
                                     <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
                                     <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
-                                </ListView>
+                                </ListView>-->
                             </StackPanel>
                         </GroupBox>
                         <Button Margin="0,5,0,5">
@@ -152,7 +153,15 @@
                         </Button>
                     </StackPanel>
                     <GroupBox Header="Задания планировщика" Grid.Column="1">
-                        <ListBox ItemsSource="{Binding MainWindowModel.Scheduler.Tasks, Source={StaticResource Locator}}"/>
+                        <ListBox ItemsSource="{Binding Scheduler.Tasks}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="data:SchedulerTask">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding DateTime}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </GroupBox>
                 </Grid>
             </TabItem>

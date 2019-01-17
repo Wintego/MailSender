@@ -76,7 +76,7 @@ namespace EmailSendService.lib
         {
             foreach (var recipient in recipients)
             {
-                Send(subject, body, recipient.EmailAdress);
+                Task.Factory.StartNew(()=> Send(subject, body, recipient.EmailAdress));
             }
         }
     }

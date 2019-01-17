@@ -9,10 +9,10 @@
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
     <StackPanel DataContext="{Binding CurrentRecipient}">
         <GroupBox Header="ID">
-            <TextBox IsReadOnly="True" Text="{Binding Id}"/>
+            <TextBox IsReadOnly="True" Text="{Binding Id, NotifyOnValidationError=True}"/>
         </GroupBox>
         <GroupBox Header="Имя">
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Validation.Error="Validation_OnError"/>
         </GroupBox>
         <GroupBox Header="Адрес">
             <TextBox Text="{Binding EmailAdress, UpdateSourceTrigger=PropertyChanged}"/>

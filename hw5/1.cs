@@ -9,54 +9,42 @@ namespace hw5
 {
     class Program
     {
+        static int fact = 1, sum = 0;
         static void Main(string[] args)
         {
-            //int value = Convert.ToInt32(Console.ReadLine());
-
-            //Thread f = new Thread(() => Factorial(value));
-            //f.Start();
-
-            //Thread s = new Thread(() => Sum(value));
-            //s.Start();
-
-            Thread csvtotxt = new Thread(hw5._2.Hw52);
-            csvtotxt.IsBackground = true;
-            csvtotxt.Start();
-            var dt = DateTime.Now;
-            while (true)
-                Console.Title = (DateTime.Now-dt).ToString();
-
+            int value = Convert.ToInt32(Console.ReadLine());
+            Thread second = new Thread(() => OnConsole(value));
+            second.Start();
             Console.ReadKey();
         }
+        static void OnConsole(int value)
+        {
+            
+            Thread third = new Thread(() => Factorial(fact));
+            third.Start();
+            Console.WriteLine(sum);
 
-        //static int Factorial(int f)
-        //{
-        //    if (f == 1) return 1;
-        //    return f * Factorial(f - 1);
-        //}
+            Thread forth = new Thread(() => Sum(sum));
+            forth.Start();
+            Console.WriteLine(fact);
+        }
         static void Factorial(int f)
         {
-            int fact = 1;
             for (int i = 1; i <= f; i++)
             {
                 fact *= i;
             }
-            Console.WriteLine(fact);
         }
 
-        //static int Sum(int s)
-        //{
-        //    if (s == 0) return 0;
-        //    return s + Sum(s - 1);
-        //}
         static void Sum(int s)
         {
-            int sum = 0;
             for (int i = 1; i <= s; i++)
             {
                 sum += i;
             }
-            Console.WriteLine(sum);
         }
+
+        
+        
     }
 }
