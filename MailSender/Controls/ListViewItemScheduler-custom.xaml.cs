@@ -12,26 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Net.Mail;
-using System.Net;
-using System.Security;
 
-namespace MailSender
+namespace MailSender.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ListViewItemScheduler_custom.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListViewItemScheduler_custom : UserControl
     {
-        public MainWindow()
+        public ListViewItemScheduler_custom()
         {
             InitializeComponent();
-        }
-
-        private void PlannerClick(object sender, RoutedEventArgs e)
-        {
-            planner.IsSelected = true;
         }
     }
 }

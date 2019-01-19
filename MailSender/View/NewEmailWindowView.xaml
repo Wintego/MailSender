@@ -1,0 +1,44 @@
+﻿<Window x:Class="MailSender.View.NewEmailWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender.View"
+        xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
+        xmlns:database="clr-namespace:SpamTools.lib.Database;assembly=SpamTools.lib"
+        mc:Ignorable="d"
+        Title="Добавить новое задание" Height="Auto" Width="300"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+    <StackPanel Margin="5">
+        <TextBlock>Выберите дату и время отправки:</TextBlock>
+        <xwt:DateTimePicker Name="DateTimePicker"></xwt:DateTimePicker>
+        <TextBlock>Выберите отправителя:</TextBlock>
+        <ComboBox ItemsSource="{x:Static data:Senders.List}" Name="From">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="data:Sender">
+                    <TextBlock Text="{Binding Adress}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock>Выберите получателей:</TextBlock>
+        <xwt:CheckComboBox ItemsSource="{Binding Recipients}">
+            <xwt:CheckComboBox.ItemTemplate>
+                <DataTemplate DataType="database:EmailRecipients">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" ("/>
+                        <TextBlock Text="{Binding EmailAdress}"></TextBlock>
+                        <TextBlock Text=")"/>
+                    </StackPanel>
+                </DataTemplate>
+            </xwt:CheckComboBox.ItemTemplate>
+        </xwt:CheckComboBox>
+        <TextBlock>Укажите тему</TextBlock>
+        <TextBox Name="Subject"></TextBox>
+        <TextBlock>Укажите текст письма</TextBlock>
+        <TextBox Name="Content" Height="250"/>
+        <Button Content="Добавить задание"/>
+        <Button Content="Отменить"/>
+    </StackPanel>
+</Window>

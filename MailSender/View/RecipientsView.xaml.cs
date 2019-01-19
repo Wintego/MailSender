@@ -12,26 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Net.Mail;
-using System.Net;
-using System.Security;
+using SpamTools.lib.Database;
 
-namespace MailSender
+namespace MailSender.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RecipientsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RecipientsView : UserControl
     {
-        public MainWindow()
+        public RecipientsView()
         {
             InitializeComponent();
-        }
-
-        private void PlannerClick(object sender, RoutedEventArgs e)
-        {
-            planner.IsSelected = true;
         }
     }
 }
