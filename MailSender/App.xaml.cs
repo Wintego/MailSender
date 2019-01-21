@@ -13,5 +13,15 @@ namespace MailSender
     /// </summary>
     public partial class App : Application
     {
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    base.OnStartup(e);
+
+        //    using (var db = new SpamTools.lib.Data.SpamDBContainer())
+        //    {
+        //        var tasks = db.SchedulerTasksSet.Where(t => Convert.ToDateTime(t.Time) < DateTime.Now).ToArray();
+        //    }
+                
+        //}
     }
 }

@@ -31,10 +31,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,12 +62,45 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MailDatabase.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Email.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmailList.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmailRecipient.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmailSender.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Mail.cs" />
     <Compile Include="Data\MailServer.cs" />
     <Compile Include="Data\MailServers.cs" />
     <Compile Include="Data\SchedulerTask.cs" />
+    <Compile Include="Data\SchedulerTasks.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Sender.cs" />
     <Compile Include="Data\Senders.cs" />
+    <Compile Include="Data\Server.cs">
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpamDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpamDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpamDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpamDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpamDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpamDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="IDataService.cs" />
     <Compile Include="MainSenderService.cs" />
     <Compile Include="MVVM\LambdaCommand.cs" />
@@ -72,7 +114,19 @@
     <Compile Include="Scheduler.cs" />
     <Compile Include="Service\PasswordService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\SpamDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SpamDB.Context.cs</LastGenOutput>
+      <DependentUpon>SpamDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\SpamDB.edmx.sql" />
+    <Content Include="Data\SpamDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SpamDB.cs</LastGenOutput>
+      <DependentUpon>SpamDB.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Database\MailDatabase.dbml">
@@ -83,6 +137,14 @@
     <None Include="Database\MailDatabase.dbml.layout">
       <DependentUpon>MailDatabase.dbml</DependentUpon>
     </None>
+    <EntityDeploy Include="Data\SpamDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SpamDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\SpamDB.edmx.diagram">
+      <DependentUpon>SpamDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
