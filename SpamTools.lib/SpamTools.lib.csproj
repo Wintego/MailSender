@@ -62,47 +62,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MailDatabase.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Data\Email.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EmailList.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EmailRecipient.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EmailSender.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Data\DataBaseContext.cs" />
     <Compile Include="Data\Mail.cs" />
     <Compile Include="Data\MailServer.cs" />
     <Compile Include="Data\MailServers.cs" />
+    <Compile Include="Data\Recipient.cs" />
     <Compile Include="Data\SchedulerTask.cs" />
-    <Compile Include="Data\SchedulerTasks.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Sender.cs" />
     <Compile Include="Data\Senders.cs" />
-    <Compile Include="Data\Server.cs">
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SpamDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SpamDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SpamDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SpamDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SpamDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SpamDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="IDataService.cs" />
     <Compile Include="MainSenderService.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\LambdaCommand.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,20 +85,9 @@
     <Compile Include="Service\PasswordService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\SpamDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SpamDB.Context.cs</LastGenOutput>
-      <DependentUpon>SpamDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Data\SpamDB.edmx.sql" />
-    <Content Include="Data\SpamDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SpamDB.cs</LastGenOutput>
-      <DependentUpon>SpamDB.edmx</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Database\MailDatabase.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>MailDatabase.designer.cs</LastGenOutput>
@@ -136,13 +95,6 @@
     </None>
     <None Include="Database\MailDatabase.dbml.layout">
       <DependentUpon>MailDatabase.dbml</DependentUpon>
-    </None>
-    <EntityDeploy Include="Data\SpamDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SpamDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Data\SpamDB.edmx.diagram">
-      <DependentUpon>SpamDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

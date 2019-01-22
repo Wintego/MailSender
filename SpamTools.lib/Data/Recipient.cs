@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpamTools.lib.Database;
 
 namespace SpamTools.lib.Data
 {
-    public class Mail
+    public class Recipient
     {
         public int Id { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
+        public string Name { get; set; }
+        public string Adress { get; set; }
     }
 }
