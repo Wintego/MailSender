@@ -12,5 +12,10 @@ namespace SpamTools.lib.Data
         public int Id { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+
+        public Mail(string subject, string body)
+        {
+
+        }
     }
 }

@@ -57,6 +57,7 @@ namespace MailSender.ViewModel
             FindRecipientCommand = new RelayCommand(OnFindRecipientCommandExecute,true);
             SendMailCommand = new RelayCommand(OnSendMailCommandExecute, true);
             AddNewEmailCommand = new RelayCommand(OnAddNewEmailCommandExecute, true);
+            ExportRecipientCommand = new RelayCommand(OnExportRecipientExecute, true);
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -150,6 +151,18 @@ namespace MailSender.ViewModel
         private void OnAddNewEmailCommandExecute()
         {
             var a = new View.NewEmailWindowView().ShowDialog();
+        }
+
+        public ICommand ExportRecipientCommand { get; set; }
+
+        private void OnExportRecipientExecute()
+        {
+            var doc = new SpamTools.lib.Service.Report();
+            doc.header = "Список получателей:";
+            foreach (var recipient in Recipients)
+                doc.content+= $"{recipient.Id}. {recipient.Name}*";
+            doc.CreatePackage("export.docx");
+            Status = "Экспорт выполнен";
         }
     }
 }
