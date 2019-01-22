@@ -157,10 +157,11 @@ namespace MailSender.ViewModel
 
         private void OnExportRecipientExecute()
         {
-            var doc = new SpamTools.lib.Service.Report();
-            doc.header = "Список получателей:";
+            var doc = new SpamTools.lib.Service.GeneratedClass();
+            doc.header = "Список получателей";
+
             foreach (var recipient in Recipients)
-                doc.content+= $"{recipient.Id}. {recipient.Name}*";
+                doc.body.Add($"{recipient.Id}. {recipient.Name} {recipient.EmailAdress}");
             doc.CreatePackage("export.docx");
             Status = "Экспорт выполнен";
         }

@@ -12,10 +12,12 @@ using Thm15 = DocumentFormat.OpenXml.Office2013.Theme;
 
 namespace SpamTools.lib.Service
 {
-    public class Report
+    public class GeneratedClass
     {
-        public string header { get; set; } = "Список:";
-        public string content { get; set; }
+        public string header { get; set; } = "Заголовок";
+
+        public System.Collections.Generic.List<string> body { get; set; } =
+            new System.Collections.Generic.List<string>();
         // Creates a WordprocessingDocument.
         public void CreatePackage(string filePath)
         {
@@ -34,20 +36,23 @@ namespace SpamTools.lib.Service
             MainDocumentPart mainDocumentPart1 = document.AddMainDocumentPart();
             GenerateMainDocumentPart1Content(mainDocumentPart1);
 
-            WebSettingsPart webSettingsPart1 = mainDocumentPart1.AddNewPart<WebSettingsPart>("rId3");
-            GenerateWebSettingsPart1Content(webSettingsPart1);
-
-            DocumentSettingsPart documentSettingsPart1 = mainDocumentPart1.AddNewPart<DocumentSettingsPart>("rId2");
+            DocumentSettingsPart documentSettingsPart1 = mainDocumentPart1.AddNewPart<DocumentSettingsPart>("rId3");
             GenerateDocumentSettingsPart1Content(documentSettingsPart1);
 
-            StyleDefinitionsPart styleDefinitionsPart1 = mainDocumentPart1.AddNewPart<StyleDefinitionsPart>("rId1");
+            StyleDefinitionsPart styleDefinitionsPart1 = mainDocumentPart1.AddNewPart<StyleDefinitionsPart>("rId2");
             GenerateStyleDefinitionsPart1Content(styleDefinitionsPart1);
 
-            ThemePart themePart1 = mainDocumentPart1.AddNewPart<ThemePart>("rId5");
+            NumberingDefinitionsPart numberingDefinitionsPart1 = mainDocumentPart1.AddNewPart<NumberingDefinitionsPart>("rId1");
+            GenerateNumberingDefinitionsPart1Content(numberingDefinitionsPart1);
+
+            ThemePart themePart1 = mainDocumentPart1.AddNewPart<ThemePart>("rId6");
             GenerateThemePart1Content(themePart1);
 
-            FontTablePart fontTablePart1 = mainDocumentPart1.AddNewPart<FontTablePart>("rId4");
+            FontTablePart fontTablePart1 = mainDocumentPart1.AddNewPart<FontTablePart>("rId5");
             GenerateFontTablePart1Content(fontTablePart1);
+
+            WebSettingsPart webSettingsPart1 = mainDocumentPart1.AddNewPart<WebSettingsPart>("rId4");
+            GenerateWebSettingsPart1Content(webSettingsPart1);
 
             SetPackageProperties(document);
         }
@@ -60,13 +65,13 @@ namespace SpamTools.lib.Service
             Ap.Template template1 = new Ap.Template();
             template1.Text = "Normal.dotm";
             Ap.TotalTime totalTime1 = new Ap.TotalTime();
-            totalTime1.Text = "2";
+            totalTime1.Text = "3";
             Ap.Pages pages1 = new Ap.Pages();
             pages1.Text = "1";
             Ap.Words words1 = new Ap.Words();
-            words1.Text = "6";
+            words1.Text = "4";
             Ap.Characters characters1 = new Ap.Characters();
-            characters1.Text = "39";
+            characters1.Text = "28";
             Ap.Application application1 = new Ap.Application();
             application1.Text = "Microsoft Office Word";
             Ap.DocumentSecurity documentSecurity1 = new Ap.DocumentSecurity();
@@ -82,7 +87,7 @@ namespace SpamTools.lib.Service
             Ap.LinksUpToDate linksUpToDate1 = new Ap.LinksUpToDate();
             linksUpToDate1.Text = "false";
             Ap.CharactersWithSpaces charactersWithSpaces1 = new Ap.CharactersWithSpaces();
-            charactersWithSpaces1.Text = "44";
+            charactersWithSpaces1.Text = "31";
             Ap.SharedDocument sharedDocument1 = new Ap.SharedDocument();
             sharedDocument1.Text = "false";
             Ap.HyperlinksChanged hyperlinksChanged1 = new Ap.HyperlinksChanged();
@@ -110,6 +115,10 @@ namespace SpamTools.lib.Service
             extendedFilePropertiesPart1.Properties = properties1;
         }
 
+        public void Create(string header, string[] body)
+        {
+
+        }
         // Generates content of mainDocumentPart1.
         private void GenerateMainDocumentPart1Content(MainDocumentPart mainDocumentPart1)
         {
@@ -143,10 +152,10 @@ namespace SpamTools.lib.Service
             document1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
             document1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
             document1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
-
+            
             Body body1 = new Body();
 
-            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "009233DB", RsidParagraphProperties = "009233DB", RsidRunAdditionDefault = "009233DB" };
+            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "009233DB", RsidParagraphProperties = "00900203", RsidRunAdditionDefault = "009233DB" };
 
             ParagraphProperties paragraphProperties1 = new ParagraphProperties();
             ParagraphStyleId paragraphStyleId1 = new ParagraphStyleId() { Val = "a3" };
@@ -158,75 +167,39 @@ namespace SpamTools.lib.Service
             text1.Text = header;
 
             run1.Append(text1);
-
-            paragraph1.Append(paragraphProperties1);
-            paragraph1.Append(run1);
-            Paragraph paragraph2 = new Paragraph() { RsidParagraphAddition = "009233DB", RsidRunAdditionDefault = "009233DB" };
-
-            Paragraph paragraph3 = new Paragraph() { RsidParagraphAddition = "009233DB", RsidRunAdditionDefault = "009233DB" };
-
-            Run run2 = new Run();
-            Text text2 = new Text();
-            text2.Text = content;
-
-            run2.Append(text2);
-
-            paragraph3.Append(run2);
-
-            Paragraph paragraph4 = new Paragraph() { RsidParagraphAddition = "009233DB", RsidRunAdditionDefault = "009233DB" };
-
-            Run run3 = new Run();
-            Text text3 = new Text();
-            text3.Text = "";
-
-            run3.Append(text3);
             BookmarkStart bookmarkStart1 = new BookmarkStart() { Name = "_GoBack", Id = "0" };
             BookmarkEnd bookmarkEnd1 = new BookmarkEnd() { Id = "0" };
 
-            paragraph4.Append(run3);
-            paragraph4.Append(bookmarkStart1);
-            paragraph4.Append(bookmarkEnd1);
-
-            SectionProperties sectionProperties1 = new SectionProperties() { RsidR = "009233DB" };
-            PageSize pageSize1 = new PageSize() { Width = (UInt32Value)11906U, Height = (UInt32Value)16838U };
-            PageMargin pageMargin1 = new PageMargin() { Top = 1134, Right = (UInt32Value)850U, Bottom = 1134, Left = (UInt32Value)1701U, Header = (UInt32Value)708U, Footer = (UInt32Value)708U, Gutter = (UInt32Value)0U };
-            Columns columns1 = new Columns() { Space = "708" };
-            DocGrid docGrid1 = new DocGrid() { LinePitch = 360 };
-
-            sectionProperties1.Append(pageSize1);
-            sectionProperties1.Append(pageMargin1);
-            sectionProperties1.Append(columns1);
-            sectionProperties1.Append(docGrid1);
-
+            paragraph1.Append(paragraphProperties1);
+            paragraph1.Append(run1);
+            paragraph1.Append(bookmarkStart1);
+            paragraph1.Append(bookmarkEnd1);
             body1.Append(paragraph1);
-            body1.Append(paragraph2);
-            body1.Append(paragraph3);
-            body1.Append(paragraph4);
-            body1.Append(sectionProperties1);
+            foreach (var p in body)
+            {
+                Paragraph paragraph2 = new Paragraph() { RsidParagraphAddition = "009F4DB5", RsidParagraphProperties = "00DB7DB8", RsidRunAdditionDefault = "009233DB" };
+
+                ParagraphProperties paragraphProperties2 = new ParagraphProperties();
+                Indentation indentation1 = new Indentation() { Start = "360" };
+
+                paragraphProperties2.Append(indentation1);
+
+                Run run2 = new Run();
+                Text text2 = new Text();
+                text2.Text = p;
+
+                run2.Append(text2);
+
+                paragraph2.Append(paragraphProperties2);
+                paragraph2.Append(run2);
+
+                body1.Append(paragraph2);
+            }
+            
 
             document1.Append(body1);
 
             mainDocumentPart1.Document = document1;
-        }
-
-        // Generates content of webSettingsPart1.
-        private void GenerateWebSettingsPart1Content(WebSettingsPart webSettingsPart1)
-        {
-            WebSettings webSettings1 = new WebSettings() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 w15 w16se w16cid" } };
-            webSettings1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
-            webSettings1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
-            webSettings1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
-            webSettings1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
-            webSettings1.AddNamespaceDeclaration("w15", "http://schemas.microsoft.com/office/word/2012/wordml");
-            webSettings1.AddNamespaceDeclaration("w16cid", "http://schemas.microsoft.com/office/word/2016/wordml/cid");
-            webSettings1.AddNamespaceDeclaration("w16se", "http://schemas.microsoft.com/office/word/2015/wordml/symex");
-            OptimizeForBrowser optimizeForBrowser1 = new OptimizeForBrowser();
-            AllowPNG allowPNG1 = new AllowPNG();
-
-            webSettings1.Append(optimizeForBrowser1);
-            webSettings1.Append(allowPNG1);
-
-            webSettingsPart1.WebSettings = webSettings1;
         }
 
         // Generates content of documentSettingsPart1.
@@ -267,10 +240,24 @@ namespace SpamTools.lib.Service
 
             Rsids rsids1 = new Rsids();
             RsidRoot rsidRoot1 = new RsidRoot() { Val = "009233DB" };
-            Rsid rsid1 = new Rsid() { Val = "009233DB" };
+            Rsid rsid1 = new Rsid() { Val = "00900203" };
+            Rsid rsid2 = new Rsid() { Val = "009233DB" };
+            Rsid rsid3 = new Rsid() { Val = "009F4DB5" };
+            Rsid rsid4 = new Rsid() { Val = "00AC052F" };
+            Rsid rsid5 = new Rsid() { Val = "00BC63F3" };
+            Rsid rsid6 = new Rsid() { Val = "00BE7595" };
+            Rsid rsid7 = new Rsid() { Val = "00C65A67" };
+            Rsid rsid8 = new Rsid() { Val = "00DB7DB8" };
 
             rsids1.Append(rsidRoot1);
             rsids1.Append(rsid1);
+            rsids1.Append(rsid2);
+            rsids1.Append(rsid3);
+            rsids1.Append(rsid4);
+            rsids1.Append(rsid5);
+            rsids1.Append(rsid6);
+            rsids1.Append(rsid7);
+            rsids1.Append(rsid8);
 
             M.MathProperties mathProperties1 = new M.MathProperties();
             M.MathFont mathFont1 = new M.MathFont() { Val = "Cambria Math" };
@@ -311,7 +298,7 @@ namespace SpamTools.lib.Service
             shapeDefaults1.Append(shapeLayout1);
             DecimalSymbol decimalSymbol1 = new DecimalSymbol() { Val = "," };
             ListSeparator listSeparator1 = new ListSeparator() { Val = ";" };
-            W14.DocumentId documentId1 = new W14.DocumentId() { Val = "213E7DEA" };
+            W14.DocumentId documentId1 = new W14.DocumentId() { Val = "5EC07B79" };
             W15.ChartTrackingRefBased chartTrackingRefBased1 = new W15.ChartTrackingRefBased();
             W15.PersistentDocumentId persistentDocumentId1 = new W15.PersistentDocumentId() { Val = "{76348BA4-E93E-4568-B84C-FEEC1FFA4CDB}" };
 
@@ -1193,7 +1180,7 @@ namespace SpamTools.lib.Service
             LinkedStyle linkedStyle1 = new LinkedStyle() { Val = "a4" };
             UIPriority uIPriority4 = new UIPriority() { Val = 10 };
             PrimaryStyle primaryStyle2 = new PrimaryStyle();
-            Rsid rsid2 = new Rsid() { Val = "009233DB" };
+            Rsid rsid9 = new Rsid() { Val = "009233DB" };
 
             StyleParagraphProperties styleParagraphProperties1 = new StyleParagraphProperties();
             SpacingBetweenLines spacingBetweenLines2 = new SpacingBetweenLines() { After = "0", Line = "240", LineRule = LineSpacingRuleValues.Auto };
@@ -1221,7 +1208,7 @@ namespace SpamTools.lib.Service
             style5.Append(linkedStyle1);
             style5.Append(uIPriority4);
             style5.Append(primaryStyle2);
-            style5.Append(rsid2);
+            style5.Append(rsid9);
             style5.Append(styleParagraphProperties1);
             style5.Append(styleRunProperties1);
 
@@ -1230,7 +1217,7 @@ namespace SpamTools.lib.Service
             BasedOn basedOn2 = new BasedOn() { Val = "a0" };
             LinkedStyle linkedStyle2 = new LinkedStyle() { Val = "a3" };
             UIPriority uIPriority5 = new UIPriority() { Val = 10 };
-            Rsid rsid3 = new Rsid() { Val = "009233DB" };
+            Rsid rsid10 = new Rsid() { Val = "009233DB" };
 
             StyleRunProperties styleRunProperties2 = new StyleRunProperties();
             RunFonts runFonts3 = new RunFonts() { AsciiTheme = ThemeFontValues.MajorHighAnsi, HighAnsiTheme = ThemeFontValues.MajorHighAnsi, EastAsiaTheme = ThemeFontValues.MajorEastAsia, ComplexScriptTheme = ThemeFontValues.MajorBidi };
@@ -1249,8 +1236,29 @@ namespace SpamTools.lib.Service
             style6.Append(basedOn2);
             style6.Append(linkedStyle2);
             style6.Append(uIPriority5);
-            style6.Append(rsid3);
+            style6.Append(rsid10);
             style6.Append(styleRunProperties2);
+
+            Style style7 = new Style() { Type = StyleValues.Paragraph, StyleId = "a5" };
+            StyleName styleName7 = new StyleName() { Val = "List Paragraph" };
+            BasedOn basedOn3 = new BasedOn() { Val = "a" };
+            UIPriority uIPriority6 = new UIPriority() { Val = 34 };
+            PrimaryStyle primaryStyle3 = new PrimaryStyle();
+            Rsid rsid11 = new Rsid() { Val = "00BC63F3" };
+
+            StyleParagraphProperties styleParagraphProperties2 = new StyleParagraphProperties();
+            Indentation indentation2 = new Indentation() { Start = "720" };
+            ContextualSpacing contextualSpacing2 = new ContextualSpacing();
+
+            styleParagraphProperties2.Append(indentation2);
+            styleParagraphProperties2.Append(contextualSpacing2);
+
+            style7.Append(styleName7);
+            style7.Append(basedOn3);
+            style7.Append(uIPriority6);
+            style7.Append(primaryStyle3);
+            style7.Append(rsid11);
+            style7.Append(styleParagraphProperties2);
 
             styles1.Append(docDefaults1);
             styles1.Append(latentStyles1);
@@ -1260,8 +1268,280 @@ namespace SpamTools.lib.Service
             styles1.Append(style4);
             styles1.Append(style5);
             styles1.Append(style6);
+            styles1.Append(style7);
 
             styleDefinitionsPart1.Styles = styles1;
+        }
+
+        // Generates content of numberingDefinitionsPart1.
+        private void GenerateNumberingDefinitionsPart1Content(NumberingDefinitionsPart numberingDefinitionsPart1)
+        {
+            Numbering numbering1 = new Numbering() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 w15 w16se w16cid wp14" } };
+            numbering1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
+            numbering1.AddNamespaceDeclaration("cx", "http://schemas.microsoft.com/office/drawing/2014/chartex");
+            numbering1.AddNamespaceDeclaration("cx1", "http://schemas.microsoft.com/office/drawing/2015/9/8/chartex");
+            numbering1.AddNamespaceDeclaration("cx2", "http://schemas.microsoft.com/office/drawing/2015/10/21/chartex");
+            numbering1.AddNamespaceDeclaration("cx3", "http://schemas.microsoft.com/office/drawing/2016/5/9/chartex");
+            numbering1.AddNamespaceDeclaration("cx4", "http://schemas.microsoft.com/office/drawing/2016/5/10/chartex");
+            numbering1.AddNamespaceDeclaration("cx5", "http://schemas.microsoft.com/office/drawing/2016/5/11/chartex");
+            numbering1.AddNamespaceDeclaration("cx6", "http://schemas.microsoft.com/office/drawing/2016/5/12/chartex");
+            numbering1.AddNamespaceDeclaration("cx7", "http://schemas.microsoft.com/office/drawing/2016/5/13/chartex");
+            numbering1.AddNamespaceDeclaration("cx8", "http://schemas.microsoft.com/office/drawing/2016/5/14/chartex");
+            numbering1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
+            numbering1.AddNamespaceDeclaration("aink", "http://schemas.microsoft.com/office/drawing/2016/ink");
+            numbering1.AddNamespaceDeclaration("am3d", "http://schemas.microsoft.com/office/drawing/2017/model3d");
+            numbering1.AddNamespaceDeclaration("o", "urn:schemas-microsoft-com:office:office");
+            numbering1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            numbering1.AddNamespaceDeclaration("m", "http://schemas.openxmlformats.org/officeDocument/2006/math");
+            numbering1.AddNamespaceDeclaration("v", "urn:schemas-microsoft-com:vml");
+            numbering1.AddNamespaceDeclaration("wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing");
+            numbering1.AddNamespaceDeclaration("wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing");
+            numbering1.AddNamespaceDeclaration("w10", "urn:schemas-microsoft-com:office:word");
+            numbering1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+            numbering1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
+            numbering1.AddNamespaceDeclaration("w15", "http://schemas.microsoft.com/office/word/2012/wordml");
+            numbering1.AddNamespaceDeclaration("w16cid", "http://schemas.microsoft.com/office/word/2016/wordml/cid");
+            numbering1.AddNamespaceDeclaration("w16se", "http://schemas.microsoft.com/office/word/2015/wordml/symex");
+            numbering1.AddNamespaceDeclaration("wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup");
+            numbering1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
+            numbering1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
+            numbering1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
+
+            AbstractNum abstractNum1 = new AbstractNum() { AbstractNumberId = 0 };
+            abstractNum1.SetAttribute(new OpenXmlAttribute("w15", "restartNumberingAfterBreak", "http://schemas.microsoft.com/office/word/2012/wordml", "0"));
+            Nsid nsid1 = new Nsid() { Val = "1AEA3261" };
+            MultiLevelType multiLevelType1 = new MultiLevelType() { Val = MultiLevelValues.HybridMultilevel };
+            TemplateCode templateCode1 = new TemplateCode() { Val = "F9E44042" };
+
+            Level level1 = new Level() { LevelIndex = 0, TemplateCode = "04190001" };
+            StartNumberingValue startNumberingValue1 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat1 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText1 = new LevelText() { Val = "·" };
+            LevelJustification levelJustification1 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties1 = new PreviousParagraphProperties();
+            Indentation indentation3 = new Indentation() { Start = "720", Hanging = "360" };
+
+            previousParagraphProperties1.Append(indentation3);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties1 = new NumberingSymbolRunProperties();
+            RunFonts runFonts4 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Symbol", HighAnsi = "Symbol" };
+
+            numberingSymbolRunProperties1.Append(runFonts4);
+
+            level1.Append(startNumberingValue1);
+            level1.Append(numberingFormat1);
+            level1.Append(levelText1);
+            level1.Append(levelJustification1);
+            level1.Append(previousParagraphProperties1);
+            level1.Append(numberingSymbolRunProperties1);
+
+            Level level2 = new Level() { LevelIndex = 1, TemplateCode = "04190003", Tentative = true };
+            StartNumberingValue startNumberingValue2 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat2 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText2 = new LevelText() { Val = "o" };
+            LevelJustification levelJustification2 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties2 = new PreviousParagraphProperties();
+            Indentation indentation4 = new Indentation() { Start = "1440", Hanging = "360" };
+
+            previousParagraphProperties2.Append(indentation4);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties2 = new NumberingSymbolRunProperties();
+            RunFonts runFonts5 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Courier New", HighAnsi = "Courier New", ComplexScript = "Courier New" };
+
+            numberingSymbolRunProperties2.Append(runFonts5);
+
+            level2.Append(startNumberingValue2);
+            level2.Append(numberingFormat2);
+            level2.Append(levelText2);
+            level2.Append(levelJustification2);
+            level2.Append(previousParagraphProperties2);
+            level2.Append(numberingSymbolRunProperties2);
+
+            Level level3 = new Level() { LevelIndex = 2, TemplateCode = "04190005", Tentative = true };
+            StartNumberingValue startNumberingValue3 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat3 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText3 = new LevelText() { Val = "§" };
+            LevelJustification levelJustification3 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties3 = new PreviousParagraphProperties();
+            Indentation indentation5 = new Indentation() { Start = "2160", Hanging = "360" };
+
+            previousParagraphProperties3.Append(indentation5);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties3 = new NumberingSymbolRunProperties();
+            RunFonts runFonts6 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Wingdings", HighAnsi = "Wingdings" };
+
+            numberingSymbolRunProperties3.Append(runFonts6);
+
+            level3.Append(startNumberingValue3);
+            level3.Append(numberingFormat3);
+            level3.Append(levelText3);
+            level3.Append(levelJustification3);
+            level3.Append(previousParagraphProperties3);
+            level3.Append(numberingSymbolRunProperties3);
+
+            Level level4 = new Level() { LevelIndex = 3, TemplateCode = "04190001", Tentative = true };
+            StartNumberingValue startNumberingValue4 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat4 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText4 = new LevelText() { Val = "·" };
+            LevelJustification levelJustification4 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties4 = new PreviousParagraphProperties();
+            Indentation indentation6 = new Indentation() { Start = "2880", Hanging = "360" };
+
+            previousParagraphProperties4.Append(indentation6);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties4 = new NumberingSymbolRunProperties();
+            RunFonts runFonts7 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Symbol", HighAnsi = "Symbol" };
+
+            numberingSymbolRunProperties4.Append(runFonts7);
+
+            level4.Append(startNumberingValue4);
+            level4.Append(numberingFormat4);
+            level4.Append(levelText4);
+            level4.Append(levelJustification4);
+            level4.Append(previousParagraphProperties4);
+            level4.Append(numberingSymbolRunProperties4);
+
+            Level level5 = new Level() { LevelIndex = 4, TemplateCode = "04190003", Tentative = true };
+            StartNumberingValue startNumberingValue5 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat5 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText5 = new LevelText() { Val = "o" };
+            LevelJustification levelJustification5 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties5 = new PreviousParagraphProperties();
+            Indentation indentation7 = new Indentation() { Start = "3600", Hanging = "360" };
+
+            previousParagraphProperties5.Append(indentation7);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties5 = new NumberingSymbolRunProperties();
+            RunFonts runFonts8 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Courier New", HighAnsi = "Courier New", ComplexScript = "Courier New" };
+
+            numberingSymbolRunProperties5.Append(runFonts8);
+
+            level5.Append(startNumberingValue5);
+            level5.Append(numberingFormat5);
+            level5.Append(levelText5);
+            level5.Append(levelJustification5);
+            level5.Append(previousParagraphProperties5);
+            level5.Append(numberingSymbolRunProperties5);
+
+            Level level6 = new Level() { LevelIndex = 5, TemplateCode = "04190005", Tentative = true };
+            StartNumberingValue startNumberingValue6 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat6 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText6 = new LevelText() { Val = "§" };
+            LevelJustification levelJustification6 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties6 = new PreviousParagraphProperties();
+            Indentation indentation8 = new Indentation() { Start = "4320", Hanging = "360" };
+
+            previousParagraphProperties6.Append(indentation8);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties6 = new NumberingSymbolRunProperties();
+            RunFonts runFonts9 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Wingdings", HighAnsi = "Wingdings" };
+
+            numberingSymbolRunProperties6.Append(runFonts9);
+
+            level6.Append(startNumberingValue6);
+            level6.Append(numberingFormat6);
+            level6.Append(levelText6);
+            level6.Append(levelJustification6);
+            level6.Append(previousParagraphProperties6);
+            level6.Append(numberingSymbolRunProperties6);
+
+            Level level7 = new Level() { LevelIndex = 6, TemplateCode = "04190001", Tentative = true };
+            StartNumberingValue startNumberingValue7 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat7 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText7 = new LevelText() { Val = "·" };
+            LevelJustification levelJustification7 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties7 = new PreviousParagraphProperties();
+            Indentation indentation9 = new Indentation() { Start = "5040", Hanging = "360" };
+
+            previousParagraphProperties7.Append(indentation9);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties7 = new NumberingSymbolRunProperties();
+            RunFonts runFonts10 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Symbol", HighAnsi = "Symbol" };
+
+            numberingSymbolRunProperties7.Append(runFonts10);
+
+            level7.Append(startNumberingValue7);
+            level7.Append(numberingFormat7);
+            level7.Append(levelText7);
+            level7.Append(levelJustification7);
+            level7.Append(previousParagraphProperties7);
+            level7.Append(numberingSymbolRunProperties7);
+
+            Level level8 = new Level() { LevelIndex = 7, TemplateCode = "04190003", Tentative = true };
+            StartNumberingValue startNumberingValue8 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat8 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText8 = new LevelText() { Val = "o" };
+            LevelJustification levelJustification8 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties8 = new PreviousParagraphProperties();
+            Indentation indentation10 = new Indentation() { Start = "5760", Hanging = "360" };
+
+            previousParagraphProperties8.Append(indentation10);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties8 = new NumberingSymbolRunProperties();
+            RunFonts runFonts11 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Courier New", HighAnsi = "Courier New", ComplexScript = "Courier New" };
+
+            numberingSymbolRunProperties8.Append(runFonts11);
+
+            level8.Append(startNumberingValue8);
+            level8.Append(numberingFormat8);
+            level8.Append(levelText8);
+            level8.Append(levelJustification8);
+            level8.Append(previousParagraphProperties8);
+            level8.Append(numberingSymbolRunProperties8);
+
+            Level level9 = new Level() { LevelIndex = 8, TemplateCode = "04190005", Tentative = true };
+            StartNumberingValue startNumberingValue9 = new StartNumberingValue() { Val = 1 };
+            NumberingFormat numberingFormat9 = new NumberingFormat() { Val = NumberFormatValues.Bullet };
+            LevelText levelText9 = new LevelText() { Val = "§" };
+            LevelJustification levelJustification9 = new LevelJustification() { Val = LevelJustificationValues.Left };
+
+            PreviousParagraphProperties previousParagraphProperties9 = new PreviousParagraphProperties();
+            Indentation indentation11 = new Indentation() { Start = "6480", Hanging = "360" };
+
+            previousParagraphProperties9.Append(indentation11);
+
+            NumberingSymbolRunProperties numberingSymbolRunProperties9 = new NumberingSymbolRunProperties();
+            RunFonts runFonts12 = new RunFonts() { Hint = FontTypeHintValues.Default, Ascii = "Wingdings", HighAnsi = "Wingdings" };
+
+            numberingSymbolRunProperties9.Append(runFonts12);
+
+            level9.Append(startNumberingValue9);
+            level9.Append(numberingFormat9);
+            level9.Append(levelText9);
+            level9.Append(levelJustification9);
+            level9.Append(previousParagraphProperties9);
+            level9.Append(numberingSymbolRunProperties9);
+
+            abstractNum1.Append(nsid1);
+            abstractNum1.Append(multiLevelType1);
+            abstractNum1.Append(templateCode1);
+            abstractNum1.Append(level1);
+            abstractNum1.Append(level2);
+            abstractNum1.Append(level3);
+            abstractNum1.Append(level4);
+            abstractNum1.Append(level5);
+            abstractNum1.Append(level6);
+            abstractNum1.Append(level7);
+            abstractNum1.Append(level8);
+            abstractNum1.Append(level9);
+
+            NumberingInstance numberingInstance1 = new NumberingInstance() { NumberID = 1 };
+            AbstractNumId abstractNumId1 = new AbstractNumId() { Val = 0 };
+
+            numberingInstance1.Append(abstractNumId1);
+
+            numbering1.Append(abstractNum1);
+            numbering1.Append(numberingInstance1);
+
+            numberingDefinitionsPart1.Numbering = numbering1;
         }
 
         // Generates content of themePart1.
@@ -1868,12 +2148,12 @@ namespace SpamTools.lib.Service
             fonts1.AddNamespaceDeclaration("w16cid", "http://schemas.microsoft.com/office/word/2016/wordml/cid");
             fonts1.AddNamespaceDeclaration("w16se", "http://schemas.microsoft.com/office/word/2015/wordml/symex");
 
-            Font font1 = new Font() { Name = "Calibri" };
-            Panose1Number panose1Number1 = new Panose1Number() { Val = "020F0502020204030204" };
-            FontCharSet fontCharSet1 = new FontCharSet() { Val = "CC" };
-            FontFamily fontFamily1 = new FontFamily() { Val = FontFamilyValues.Swiss };
+            Font font1 = new Font() { Name = "Symbol" };
+            Panose1Number panose1Number1 = new Panose1Number() { Val = "05050102010706020507" };
+            FontCharSet fontCharSet1 = new FontCharSet() { Val = "02" };
+            FontFamily fontFamily1 = new FontFamily() { Val = FontFamilyValues.Roman };
             Pitch pitch1 = new Pitch() { Val = FontPitchValues.Variable };
-            FontSignature fontSignature1 = new FontSignature() { UnicodeSignature0 = "E0002EFF", UnicodeSignature1 = "C000247B", UnicodeSignature2 = "00000009", UnicodeSignature3 = "00000000", CodePageSignature0 = "000001FF", CodePageSignature1 = "00000000" };
+            FontSignature fontSignature1 = new FontSignature() { UnicodeSignature0 = "00000000", UnicodeSignature1 = "10000000", UnicodeSignature2 = "00000000", UnicodeSignature3 = "00000000", CodePageSignature0 = "80000000", CodePageSignature1 = "00000000" };
 
             font1.Append(panose1Number1);
             font1.Append(fontCharSet1);
@@ -1894,12 +2174,12 @@ namespace SpamTools.lib.Service
             font2.Append(pitch2);
             font2.Append(fontSignature2);
 
-            Font font3 = new Font() { Name = "Calibri Light" };
-            Panose1Number panose1Number3 = new Panose1Number() { Val = "020F0302020204030204" };
+            Font font3 = new Font() { Name = "Courier New" };
+            Panose1Number panose1Number3 = new Panose1Number() { Val = "02070309020205020404" };
             FontCharSet fontCharSet3 = new FontCharSet() { Val = "CC" };
-            FontFamily fontFamily3 = new FontFamily() { Val = FontFamilyValues.Swiss };
-            Pitch pitch3 = new Pitch() { Val = FontPitchValues.Variable };
-            FontSignature fontSignature3 = new FontSignature() { UnicodeSignature0 = "E0002AFF", UnicodeSignature1 = "C000247B", UnicodeSignature2 = "00000009", UnicodeSignature3 = "00000000", CodePageSignature0 = "000001FF", CodePageSignature1 = "00000000" };
+            FontFamily fontFamily3 = new FontFamily() { Val = FontFamilyValues.Modern };
+            Pitch pitch3 = new Pitch() { Val = FontPitchValues.Fixed };
+            FontSignature fontSignature3 = new FontSignature() { UnicodeSignature0 = "E0002EFF", UnicodeSignature1 = "C0007843", UnicodeSignature2 = "00000009", UnicodeSignature3 = "00000000", CodePageSignature0 = "000001FF", CodePageSignature1 = "00000000" };
 
             font3.Append(panose1Number3);
             font3.Append(fontCharSet3);
@@ -1907,24 +2187,88 @@ namespace SpamTools.lib.Service
             font3.Append(pitch3);
             font3.Append(fontSignature3);
 
+            Font font4 = new Font() { Name = "Wingdings" };
+            Panose1Number panose1Number4 = new Panose1Number() { Val = "05000000000000000000" };
+            FontCharSet fontCharSet4 = new FontCharSet() { Val = "02" };
+            FontFamily fontFamily4 = new FontFamily() { Val = FontFamilyValues.Auto };
+            Pitch pitch4 = new Pitch() { Val = FontPitchValues.Variable };
+            FontSignature fontSignature4 = new FontSignature() { UnicodeSignature0 = "00000000", UnicodeSignature1 = "10000000", UnicodeSignature2 = "00000000", UnicodeSignature3 = "00000000", CodePageSignature0 = "80000000", CodePageSignature1 = "00000000" };
+
+            font4.Append(panose1Number4);
+            font4.Append(fontCharSet4);
+            font4.Append(fontFamily4);
+            font4.Append(pitch4);
+            font4.Append(fontSignature4);
+
+            Font font5 = new Font() { Name = "Calibri" };
+            Panose1Number panose1Number5 = new Panose1Number() { Val = "020F0502020204030204" };
+            FontCharSet fontCharSet5 = new FontCharSet() { Val = "CC" };
+            FontFamily fontFamily5 = new FontFamily() { Val = FontFamilyValues.Swiss };
+            Pitch pitch5 = new Pitch() { Val = FontPitchValues.Variable };
+            FontSignature fontSignature5 = new FontSignature() { UnicodeSignature0 = "E0002EFF", UnicodeSignature1 = "C000247B", UnicodeSignature2 = "00000009", UnicodeSignature3 = "00000000", CodePageSignature0 = "000001FF", CodePageSignature1 = "00000000" };
+
+            font5.Append(panose1Number5);
+            font5.Append(fontCharSet5);
+            font5.Append(fontFamily5);
+            font5.Append(pitch5);
+            font5.Append(fontSignature5);
+
+            Font font6 = new Font() { Name = "Calibri Light" };
+            Panose1Number panose1Number6 = new Panose1Number() { Val = "020F0302020204030204" };
+            FontCharSet fontCharSet6 = new FontCharSet() { Val = "CC" };
+            FontFamily fontFamily6 = new FontFamily() { Val = FontFamilyValues.Swiss };
+            Pitch pitch6 = new Pitch() { Val = FontPitchValues.Variable };
+            FontSignature fontSignature6 = new FontSignature() { UnicodeSignature0 = "E0002AFF", UnicodeSignature1 = "C000247B", UnicodeSignature2 = "00000009", UnicodeSignature3 = "00000000", CodePageSignature0 = "000001FF", CodePageSignature1 = "00000000" };
+
+            font6.Append(panose1Number6);
+            font6.Append(fontCharSet6);
+            font6.Append(fontFamily6);
+            font6.Append(pitch6);
+            font6.Append(fontSignature6);
+
             fonts1.Append(font1);
             fonts1.Append(font2);
             fonts1.Append(font3);
+            fonts1.Append(font4);
+            fonts1.Append(font5);
+            fonts1.Append(font6);
 
             fontTablePart1.Fonts = fonts1;
         }
 
+        // Generates content of webSettingsPart1.
+        private void GenerateWebSettingsPart1Content(WebSettingsPart webSettingsPart1)
+        {
+            WebSettings webSettings1 = new WebSettings() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 w15 w16se w16cid" } };
+            webSettings1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
+            webSettings1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            webSettings1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+            webSettings1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
+            webSettings1.AddNamespaceDeclaration("w15", "http://schemas.microsoft.com/office/word/2012/wordml");
+            webSettings1.AddNamespaceDeclaration("w16cid", "http://schemas.microsoft.com/office/word/2016/wordml/cid");
+            webSettings1.AddNamespaceDeclaration("w16se", "http://schemas.microsoft.com/office/word/2015/wordml/symex");
+            OptimizeForBrowser optimizeForBrowser1 = new OptimizeForBrowser();
+            AllowPNG allowPNG1 = new AllowPNG();
+
+            webSettings1.Append(optimizeForBrowser1);
+            webSettings1.Append(allowPNG1);
+
+            webSettingsPart1.WebSettings = webSettings1;
+        }
+
         private void SetPackageProperties(OpenXmlPackage document)
         {
-            document.PackageProperties.Creator = "";
+            document.PackageProperties.Creator = "Виктор Орлов";
             document.PackageProperties.Title = "";
             document.PackageProperties.Subject = "";
             document.PackageProperties.Keywords = "";
             document.PackageProperties.Description = "";
-            document.PackageProperties.Revision = "1";
-            document.PackageProperties.Created = System.Xml.XmlConvert.ToDateTime("2019-01-01T10:00:00Z", System.Xml.XmlDateTimeSerializationMode.RoundtripKind);
-            document.PackageProperties.Modified = System.Xml.XmlConvert.ToDateTime("2019-01-01T10:02:00Z", System.Xml.XmlDateTimeSerializationMode.RoundtripKind);
-            document.PackageProperties.LastModifiedBy = "";
+            document.PackageProperties.Revision = "9";
+            document.PackageProperties.Created = System.Xml.XmlConvert.ToDateTime("2019-01-22T10:00:00Z", System.Xml.XmlDateTimeSerializationMode.RoundtripKind);
+            document.PackageProperties.Modified = System.Xml.XmlConvert.ToDateTime("2019-01-22T14:20:00Z", System.Xml.XmlDateTimeSerializationMode.RoundtripKind);
+            document.PackageProperties.LastModifiedBy = "Виктор Орлов";
         }
+
+
     }
 }
