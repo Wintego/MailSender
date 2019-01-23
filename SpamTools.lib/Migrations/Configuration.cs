@@ -9,7 +9,7 @@ namespace SpamTools.lib.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SpamTools.lib.Data.DataBaseContext context)

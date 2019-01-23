@@ -74,6 +74,10 @@
     <Compile Include="Data\Senders.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="MainSenderService.cs" />
+    <Compile Include="Migrations\201901231255064_zz.cs" />
+    <Compile Include="Migrations\201901231255064_zz.Designer.cs">
+      <DependentUpon>201901231255064_zz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\LambdaCommand.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
@@ -84,7 +88,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Scheduler.cs" />
-    <Compile Include="Service\Class1.cs" />
     <Compile Include="Service\ExportRecipients.cs" />
     <Compile Include="Service\PasswordService.cs" />
   </ItemGroup>
@@ -109,6 +112,11 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901231255064_zz.resx">
+      <DependentUpon>201901231255064_zz.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

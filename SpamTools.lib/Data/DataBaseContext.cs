@@ -13,12 +13,14 @@ namespace SpamTools.lib.Data
         public DbSet<MailServer> Servers { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
         public DbSet<Sender> Senders { get; set; }
+        public DbSet<SchedulerTask> SchedulerTask { get; set; }
 
-        public DataBaseContext():this("name=SpamDatabase") { }
-        public DataBaseContext(string ConnectionString) : 
+        public DataBaseContext():this("name=MailDataBase") { }
+
+        public DataBaseContext(string ConnectionString) :
             base(ConnectionString)
         {
-            
+
         }
 
         static DataBaseContext()

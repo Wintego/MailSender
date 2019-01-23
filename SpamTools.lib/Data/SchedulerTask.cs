@@ -9,6 +9,7 @@ namespace SpamTools.lib.Data
 {
     public class SchedulerTask
     {
+        public int Id { get; set; }
         public DateTime DateTime { get; set; }
         public IEnumerable<EmailRecipients> Recipients { get; set; }
         public MailServer MailServer { get; set; }
