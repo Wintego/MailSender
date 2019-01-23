@@ -32,7 +32,7 @@ namespace hw7
             using (var db = new DB())
             {
                 db.Clients.AddRange(input);
-                db.SaveChanges();
+                //db.SaveChanges();
                 Console.WriteLine("Импорт данных завершен.");
             }
 
@@ -47,15 +47,34 @@ namespace hw7
                 foreach (var client in clients)
                     Console.WriteLine($"{client.Id}. {client.Name} ({client.Email})");
 
-                Console.WriteLine("Введите номер элемента для редактирования: ");
-
+                Console.WriteLine("\nВведите номер элемента для редактирования: ");
                 int inputNumber = Convert.ToInt32(Console.ReadLine());
 
-                var properties = typeof(Client).GetProperties();
+
                 foreach (var property in typeof(Client).GetProperties())
+                    Console.WriteLine(property.Name);
+                Console.WriteLine("\nВведите свойство которое требуется изменить: ");
+                string inputProperty = Console.ReadLine();
+
+                Console.WriteLine("\nВведите новое значение:");
+                string newValue = Console.ReadLine();
+
+                switch (inputProperty)
                 {
-                    Console.WriteLine(property);
+                    case "Id": db.Clients.Find(inputNumber).Id = Convert.ToInt32(newValue);
+                        break;
+                    case "Name": db.Clients.Find(inputNumber).Name = newValue;
+                        break;
+                    case "Email":
+                        db.Clients.Find(inputNumber).Email = newValue;
+                        break;
+                    case "Phone":
+                        db.Clients.Find(inputNumber).Phone = newValue;
+                        break;
                 }
+                db.SaveChanges();
+
+                Console.WriteLine($"Строка изменена.");
             }
 
         }
