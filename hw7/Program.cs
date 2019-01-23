@@ -32,7 +32,7 @@ namespace hw7
             using (var db = new DB())
             {
                 db.Clients.AddRange(input);
-                //db.SaveChanges();
+                db.SaveChanges();
                 Console.WriteLine("Импорт данных завершен.");
             }
 
