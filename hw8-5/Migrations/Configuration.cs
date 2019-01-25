@@ -18,6 +18,11 @@ namespace hw8_5.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            context.Task5.AddOrUpdate(new Table { id = 1, group_id = 1, descr = "Один" });
+            context.Task5.AddOrUpdate(new Table { id = 2, group_id = 2, descr = "Два" });
+            context.Task5.AddOrUpdate(new Table { id = 3, group_id = 1, descr = "Три" });
+            context.Task5.AddOrUpdate(new Table { id = 4, group_id = 2, descr = "Четыре" });
+            context.Task5.AddOrUpdate(new Table { id = 5, group_id = 2, descr = "Пять" });
         }
     }
 }

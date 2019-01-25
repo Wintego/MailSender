@@ -50,13 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201901241443426_Intia.cs" />
-    <Compile Include="Migrations\201901241443426_Intia.Designer.cs">
-      <DependentUpon>201901241443426_Intia.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901241448261_1.cs" />
-    <Compile Include="Migrations\201901241448261_1.Designer.cs">
-      <DependentUpon>201901241448261_1.cs</DependentUpon>
+    <Compile Include="Migrations\201901250921194_Tables.cs" />
+    <Compile Include="Migrations\201901250921194_Tables.Designer.cs">
+      <DependentUpon>201901250921194_Tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -67,11 +63,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901241443426_Intia.resx">
-      <DependentUpon>201901241443426_Intia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901241448261_1.resx">
-      <DependentUpon>201901241448261_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901250921194_Tables.resx">
+      <DependentUpon>201901250921194_Tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

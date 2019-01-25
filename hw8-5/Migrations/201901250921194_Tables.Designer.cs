@@ -7,13 +7,13 @@ namespace hw8_5.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class _1 : IMigrationMetadata
+    public sealed partial class Tables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Tables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901241448261_1"; }
+            get { return "201901250921194_Tables"; }
         }
         
         string IMigrationMetadata.Source
