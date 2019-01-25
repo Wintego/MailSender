@@ -13,13 +13,18 @@ namespace hw8_5
         {
             using (var db = new DB())
             {
-                var request = from row in db.Task5 group row by row.group_id into o select new {GroupId = o.Key};
-                foreach (var a in request)
+                var request = from row in db.Task5 group row by row.group_id into o select new {GroupId = o.Key, Name=o};
+                foreach (var o in request)
                 {
-                    Console.WriteLine(a.GroupId);
+                    string values = default(string);
+                    foreach (var value in o.Name)
+                    {
+                        values += value.descr + ", ";
+                    }
+
+                    Console.WriteLine($"{o.GroupId}. {values}");
                 }
             }
-
             Console.ReadKey();
         }
     }
