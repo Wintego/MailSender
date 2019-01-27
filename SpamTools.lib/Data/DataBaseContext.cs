@@ -15,7 +15,7 @@ namespace SpamTools.lib.Data
         public DbSet<Sender> Senders { get; set; }
         public DbSet<SchedulerTask> SchedulerTask { get; set; }
 
-        public DataBaseContext():this("name=MailDataBase") { }
+        public DataBaseContext():this("name=MailDB") { }
 
         public DataBaseContext(string ConnectionString) :
             base(ConnectionString)

@@ -1,0 +1,18 @@
+﻿<Window x:Class="MailSender.View.Senders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender.View"
+        mc:Ignorable="d"
+        Title="Senders" Height="250" Width="400">
+    <StackPanel Margin="5">
+        <TextBlock Text="Имя"/>
+        <TextBox Name="Name"/>
+        <TextBlock Text="Email"/>
+        <TextBox Name="Email"/>
+        <TextBlock Text="Password"/>
+        <TextBox Name="Password"/>
+        <Button Content="Создать" Click="Button_Click"/>
+    </StackPanel>
+</Window>

@@ -133,6 +133,9 @@
     <Compile Include="View\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Senders.xaml.cs">
+      <DependentUpon>Senders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WpfTestMailSender.cs" />
     <Page Include="Controls\ListViewItemScheduler-custom.xaml">
       <SubType>Designer</SubType>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecipientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Senders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

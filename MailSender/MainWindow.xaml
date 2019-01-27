@@ -64,7 +64,7 @@
 
                         <ToolBar Band="0" BandIndex="0">
                             <controls:Otpraviteli PanelText="Отправители" x:Name="Otpraviteli" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="3"
-                                                  CreateItemCommand="" EditItemCommand="" RemoveItemCommand="">
+                                                  CreateItemCommand="{Binding SenderAddCommand}" EditItemCommand="" RemoveItemCommand="">
                                 <controls:Otpraviteli.ItemTemplate>
                                     <DataTemplate DataType="data:Sender">
                                         <StackPanel Orientation="Horizontal">

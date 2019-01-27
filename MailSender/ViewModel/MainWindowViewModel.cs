@@ -58,6 +58,7 @@ namespace MailSender.ViewModel
             SendMailCommand = new RelayCommand(OnSendMailCommandExecute, true);
             AddNewEmailCommand = new RelayCommand(OnAddNewEmailCommandExecute, true);
             ExportRecipientCommand = new RelayCommand(OnExportRecipientExecute, true);
+            SenderAddCommand = new RelayCommand(OnSenderAddCommandExecute,true);
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -73,13 +74,10 @@ namespace MailSender.ViewModel
         {
             return true;
         }
-
         public ObservableCollection<EmailRecipients> Recipients { get; } = new ObservableCollection<EmailRecipients>();
         public ICommand UpdateRecipientsCommand { get; }
-
         public ICommand CreateNewRecipientCommand { get; }
         public ICommand UpdateRecipientCommand { get; }
-
         private void OnCreateNewRecipientCommandExecute()
         {
             var recipient = new EmailRecipients {Name = "3841832", EmailAdress = "3841832@gmail.com" };
@@ -89,12 +87,10 @@ namespace MailSender.ViewModel
                 Recipients.Add(recipient);
             }
         }
-
         private bool UpdateRecipientCommandExecute(EmailRecipients Recipient)
         {
             return true; //Recipient != null || _CurrentRecipient != null;
         }
-
         private void OnUpdateRecipientCommandExecuted(EmailRecipients Recipient)
         {
             var recipient = Recipient ?? _CurrentRecipient;
@@ -108,7 +104,6 @@ namespace MailSender.ViewModel
             set => Set(ref _SearchValue, value);
         }
         public ICommand FindRecipientCommand { get; }
-
         public void OnFindRecipientCommandExecute()
         {
             if(SearchValue is null)
@@ -122,7 +117,6 @@ namespace MailSender.ViewModel
             foreach (var recipient in filter)
                 Recipients.Add(recipient);
         }
-
         public MailServer SelectedServer { set; get; }
         public Sender SelectedSender { set; get; }
         public ICommand SendMailCommand { get; }
@@ -145,16 +139,12 @@ namespace MailSender.ViewModel
             var p2 = PasswordService.Decode(SelectedSender.Password);
             senderService.Send(to, "subject", "body");
         }
-
         public ICommand AddNewEmailCommand { get; set; }
-
         private void OnAddNewEmailCommandExecute()
         {
             var a = new View.NewEmailWindowView().ShowDialog();
         }
-
         public ICommand ExportRecipientCommand { get; set; }
-
         private void OnExportRecipientExecute()
         {
             var doc = new SpamTools.lib.Service.GeneratedClass();
@@ -164,6 +154,12 @@ namespace MailSender.ViewModel
                 doc.body.Add($"{recipient.Id}. {recipient.Name} {recipient.EmailAdress}");
             doc.CreatePackage("export.docx");
             Status = "Экспорт выполнен";
+        }
+
+        public ICommand SenderAddCommand { get; set; }
+        private void OnSenderAddCommandExecute()
+        {
+            new MailSender.View.Senders().ShowDialog();
         }
     }
 }
