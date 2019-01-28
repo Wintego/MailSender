@@ -40,8 +40,8 @@ namespace MailSender.ViewModel
             set => Set(ref _Status, value);
         }
 
-        private EmailRecipients _CurrentRecipient;
-        public EmailRecipients CurrentRecipient
+        private Recipient _CurrentRecipient;
+        public Recipient CurrentRecipient
         {
             get => _CurrentRecipient;
             set => Set(ref _CurrentRecipient, value);
@@ -63,29 +63,29 @@ namespace MailSender.ViewModel
 
         private void OnUpdateRecipientsCommandExecuted()
         {
-            Recipients.Clear();
-            var db_recipients = _DataService.GetEmailRecipients();
-            foreach (var recipient in db_recipients)
-            {
-                Recipients.Add(recipient);
-            }
+            //Recipients.Clear();
+            //var db_recipients = _DataService.GetEmailRecipients();
+            //foreach (var recipient in db_recipients)
+            //{
+            //    Recipients.Add(recipient);
+            //}
         }
         private bool CanUpdateRecipientsCommandExecute()
         {
             return true;
         }
-        public ObservableCollection<EmailRecipients> Recipients { get; } = new ObservableCollection<EmailRecipients>();
+        public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
         public ICommand UpdateRecipientsCommand { get; }
         public ICommand CreateNewRecipientCommand { get; }
         public ICommand UpdateRecipientCommand { get; }
         private void OnCreateNewRecipientCommandExecute()
         {
-            var recipient = new EmailRecipients {Name = "3841832", EmailAdress = "3841832@gmail.com" };
-            if (_DataService.CreateRecipien(recipient))
-            {
-                CurrentRecipient = recipient;
-                Recipients.Add(recipient);
-            }
+            //var recipient = new EmailRecipients {Name = "3841832", EmailAdress = "3841832@gmail.com" };
+            //if (_DataService.CreateRecipien(recipient))
+            //{
+            //    CurrentRecipient = recipient;
+            //    Recipients.Add(recipient);
+            //}
         }
         private bool UpdateRecipientCommandExecute(EmailRecipients Recipient)
         {
@@ -93,9 +93,9 @@ namespace MailSender.ViewModel
         }
         private void OnUpdateRecipientCommandExecuted(EmailRecipients Recipient)
         {
-            var recipient = Recipient ?? _CurrentRecipient;
-            if (recipient is null) return;  
-            _DataService.UpdateRecipien(recipient);
+            //var recipient = Recipient ?? _CurrentRecipient;
+            //if (recipient is null) return;  
+            //_DataService.UpdateRecipien(recipient);
         }
         private string _SearchValue;
         public string SearchValue
@@ -106,16 +106,16 @@ namespace MailSender.ViewModel
         public ICommand FindRecipientCommand { get; }
         public void OnFindRecipientCommandExecute()
         {
-            if(SearchValue is null)
-                return;
-            Recipients.Clear();
-            var db_recipients = _DataService.GetEmailRecipients();
-            //var filter = db_recipients.Where(recipient => recipient.Name.Contains(SearchValue));
-            var filter = from recipient in db_recipients
-                where recipient.Name.Contains(SearchValue)
-                select recipient;
-            foreach (var recipient in filter)
-                Recipients.Add(recipient);
+            //if(SearchValue is null)
+            //    return;
+            //Recipients.Clear();
+            //var db_recipients = _DataService.GetEmailRecipients();
+            ////var filter = db_recipients.Where(recipient => recipient.Name.Contains(SearchValue));
+            //var filter = from recipient in db_recipients
+            //    where recipient.Name.Contains(SearchValue)
+            //    select recipient;
+            //foreach (var recipient in filter)
+            //    Recipients.Add(recipient);
         }
         public MailServer SelectedServer { set; get; }
         public Sender SelectedSender { set; get; }
@@ -128,7 +128,7 @@ namespace MailSender.ViewModel
                 password.AppendChar(password_char);
 
             var from = SelectedSender.Adress;
-            var to = CurrentRecipient.EmailAdress;
+            var to = CurrentRecipient.Adress;
             var senderService = new EmailSendService.lib.SenderService(
                 SelectedServer.Adress,
                 SelectedServer.Port,
@@ -151,7 +151,7 @@ namespace MailSender.ViewModel
             doc.header = "Список получателей";
 
             foreach (var recipient in Recipients)
-                doc.body.Add($"{recipient.Id}. {recipient.Name} {recipient.EmailAdress}");
+                doc.body.Add($"{recipient.Id}. {recipient.Name} {recipient.Adress}");
             doc.CreatePackage("export.docx");
             Status = "Экспорт выполнен";
         }

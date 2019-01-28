@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpamTools.lib.Data;
 
 namespace SpamTools.lib
 {
     public interface IDataService
     {
-        IEnumerable<EmailRecipients> GetEmailRecipients();
+        //IEnumerable<EmailRecipients> GetEmailRecipients();
+        IEnumerable<Recipient> GetEmailRecipients();
 
-        bool UpdateRecipien(EmailRecipients Recipient);
-        bool CreateRecipien(EmailRecipients Recipient);
+        bool UpdateRecipien(Recipient Recipient);
+        bool CreateRecipien(Recipient Recipient);
     }
 }

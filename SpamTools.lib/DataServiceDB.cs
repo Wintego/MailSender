@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpamTools.lib.Data;
 using SpamTools.lib.Database;
 
 namespace SpamTools.lib
@@ -19,21 +20,39 @@ namespace SpamTools.lib
 
         
 
-        public IEnumerable<EmailRecipients> GetEmailRecipients()
+        //public IEnumerable<EmailRecipients> GetEmailRecipients()
+        //{
+        //    return new ObservableCollection<EmailRecipients>(_DataBaseContext.EmailRecipients);
+        //}
+        public IEnumerable<Recipient> GetEmailRecipients()
         {
-            return new ObservableCollection<EmailRecipients>(_DataBaseContext.EmailRecipients);
+            using (var db = new SpamTools.lib.Data.DataBaseContext())
+            {
+                return new ObservableCollection<Recipient>(db.Recipients.ToList());
+            }
         }
 
-        public bool UpdateRecipien(EmailRecipients Recipient)
+
+        //public bool UpdateRecipien(EmailRecipients Recipient)
+        //{
+        //    _DataBaseContext.SubmitChanges();
+        //    return true;
+        //}
+        //public bool CreateRecipien(EmailRecipients Recipient)
+        //{
+        //    _DataBaseContext.EmailRecipients.InsertOnSubmit(Recipient);
+        //    _DataBaseContext.SubmitChanges();
+        //    return Recipient.Id != 0;
+        //}
+
+        public bool UpdateRecipien(Recipient Recipient)
         {
-            _DataBaseContext.SubmitChanges();
-            return true;
+            throw new NotImplementedException();
         }
-        public bool CreateRecipien(EmailRecipients Recipient)
+
+        public bool CreateRecipien(Recipient Recipient)
         {
-            _DataBaseContext.EmailRecipients.InsertOnSubmit(Recipient);
-            _DataBaseContext.SubmitChanges();
-            return Recipient.Id != 0;
+            throw new NotImplementedException();
         }
     }
 }

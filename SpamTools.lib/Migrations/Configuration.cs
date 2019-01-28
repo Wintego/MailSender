@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using SpamTools.lib.Data;
+using SpamTools.lib.Service;
+
 namespace SpamTools.lib.Migrations
 {
     using System;
@@ -18,6 +22,14 @@ namespace SpamTools.lib.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            List<Sender> Senders = new List<Sender>
+            {
+                new Sender {Name = "Ivanov", Adress = "ivanov@mail.ru" , Id=1},
+                new Sender {Name = "Petrov", Adress = "petrov@mail.ru", Id=2},
+                new Sender {Name = "Sidorov", Adress = "sidorov@mail.ru", Id=3},
+                new Sender {Name = "Ya", Adress = "berlin.22014@yandex.ru", Password = PasswordService.Encode("password"), Id=4}
+            };
+            context.Senders.AddRange(Senders);
         }
     }
 }

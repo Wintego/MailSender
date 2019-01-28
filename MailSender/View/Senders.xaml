@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender.View"
         mc:Ignorable="d"
-        Title="Senders" Height="250" Width="400">
+        Title="Senders" Height="250" Width="400" ShowInTaskbar="False">
     <StackPanel Margin="5">
         <TextBlock Text="Имя"/>
         <TextBox Name="Name"/>

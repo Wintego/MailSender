@@ -9,6 +9,13 @@ namespace SpamTools.lib.Data
 {
     public class Senders
     {
+        public void Main()
+        {
+            using (var db = new SpamTools.lib.Data.DataBaseContext())
+            {
+                
+            }
+        }
         public static List<Sender> List { get; } = new List<Sender>
         {
             new Sender {Name = "Ivanov", Adress="ivanov@mail.ru"},

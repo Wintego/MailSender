@@ -63,7 +63,7 @@
                         </ToolBar>-->
 
                         <ToolBar Band="0" BandIndex="0">
-                            <controls:Otpraviteli PanelText="Отправители" x:Name="Otpraviteli" ItemsSource="{x:Static data:Senders.List}" SelectedIndex="3"
+                            <controls:Otpraviteli PanelText="Отправители" x:Name="Otpraviteli" ItemsSource="{Binding}" SelectedIndex="3"
                                                   CreateItemCommand="{Binding SenderAddCommand}" EditItemCommand="" RemoveItemCommand="">
                                 <controls:Otpraviteli.ItemTemplate>
                                     <DataTemplate DataType="data:Sender">
