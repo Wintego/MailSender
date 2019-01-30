@@ -59,6 +59,15 @@ namespace MailSender.ViewModel
             AddNewEmailCommand = new RelayCommand(OnAddNewEmailCommandExecute, true);
             ExportRecipientCommand = new RelayCommand(OnExportRecipientExecute, true);
             SenderAddCommand = new RelayCommand(OnSenderAddCommandExecute,true);
+
+            Senders = new ObservableCollection<Sender>();
+            using (var db = new SpamTools.lib.Data.DataBaseContext())
+            {
+                foreach (var sender in db.Senders)
+                {
+                    Senders.Add(sender);
+                }
+            }
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -74,6 +83,8 @@ namespace MailSender.ViewModel
         {
             return true;
         }
+
+        public ObservableCollection<Sender> Senders { get; }
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
         public ICommand UpdateRecipientsCommand { get; }
         public ICommand CreateNewRecipientCommand { get; }
