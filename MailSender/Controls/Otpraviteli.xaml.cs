@@ -38,7 +38,7 @@ namespace MailSender.Controls
         #endregion
         #region ItemsSource 
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
-            "ItemsSource", typeof(IEnumerable), typeof(Otpraviteli), new PropertyMetadata(default(IEnumerable)));
+            nameof(ItemsSource), typeof(IEnumerable), typeof(Otpraviteli), new PropertyMetadata(default(IEnumerable)));
 
         public IEnumerable ItemsSource
         {
