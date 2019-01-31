@@ -32,7 +32,7 @@
                 <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="30" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Имя" MinWidth="100" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Адрес" Width="*"  Binding="{Binding EmailAdress}"/>
+                <DataGridTextColumn Header="Адрес" Width="*"  Binding="{Binding Adress}"/>
             </DataGrid.Columns>
             </DataGrid>
     </DockPanel>

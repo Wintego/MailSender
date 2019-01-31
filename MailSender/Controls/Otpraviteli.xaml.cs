@@ -49,7 +49,7 @@ namespace MailSender.Controls
         #region ItemTemplate
 
         public static readonly DependencyProperty ItemTemplateProperty = DependencyProperty.Register(
-            "ItemTemplate", typeof(DataTemplate), typeof(Otpraviteli), new PropertyMetadata(default(DataTemplate)));
+            nameof(ItemTemplate), typeof(DataTemplate), typeof(Otpraviteli), new PropertyMetadata(default(DataTemplate)));
 
         public DataTemplate ItemTemplate
         {

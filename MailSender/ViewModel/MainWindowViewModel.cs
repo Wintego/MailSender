@@ -61,13 +61,15 @@ namespace MailSender.ViewModel
             SenderAddCommand = new RelayCommand(OnSenderAddCommandExecute,true);
 
             Senders = new ObservableCollection<Sender>();
+            Recipients = new ObservableCollection<Recipient>();
             using (var db = new SpamTools.lib.Data.DataBaseContext())
             {
                 foreach (var sender in db.Senders)
-                {
                     Senders.Add(sender);
-                }
+                foreach (var recipient in db.Recipients)
+                    Recipients.Add(recipient);
             }
+            
         }
 
         private void OnUpdateRecipientsCommandExecuted()

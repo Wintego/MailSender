@@ -83,7 +83,7 @@
                                     </DataTemplate>
                                 </controls:Otpraviteli.ItemTemplate>
                             </controls:Otpraviteli>
-                            <controls:Servers PanelText="Сервера" ItemsSource="{x:Static data:MailServers.servers}">
+                            <controls:Servers PanelText="Сервера" ItemsSource="{Binding Senders}">
                                 <controls:Servers.ItemTemplate>
                                     <DataTemplate DataType="data:MailServer">
                                         <StackPanel Orientation="Horizontal">

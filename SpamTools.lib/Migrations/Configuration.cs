@@ -30,6 +30,14 @@ namespace SpamTools.lib.Migrations
                 new Sender {Name = "Ya", Adress = "berlin.22014@yandex.ru", Password = PasswordService.Encode("password"), Id=4}
             };
             context.Senders.AddRange(Senders);
+
+            List<Recipient> Recipient = new List<Recipient>
+            {
+                new Recipient {Id = 1, Name="Recipient 1", Adress="recipient1@mail.ru"},
+                new Recipient {Id = 2, Name="Recipient 2", Adress="recipient2@mail.ru"},
+                new Recipient {Id = 3, Name="Recipient 3", Adress="recipient3@mail.ru"}
+            };
+            context.Recipients.AddRange(Recipient);
         }
     }
 }
