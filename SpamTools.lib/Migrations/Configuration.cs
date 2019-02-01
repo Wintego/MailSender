@@ -44,6 +44,7 @@ namespace SpamTools.lib.Migrations
                 new MailServer {Id = 1, Adress = "smtp.yandex.ru", Port = 465, UseSSL = true}
             };
             context.Servers.AddRange(Servers);
+            context.Mails.AddOrUpdate(new Mail("test subject", "test body"));
 
             SchedulerTask task = new SchedulerTask()
             {
@@ -57,6 +58,7 @@ namespace SpamTools.lib.Migrations
                     new Recipient() {Name = "test recipient", Adress = "test@recipient.com"}
                 }
             };
+            context.SaveChanges();
         }
     }
 }

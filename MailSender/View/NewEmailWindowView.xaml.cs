@@ -36,12 +36,19 @@ namespace MailSender.View
                 Recipients = Recipients.SelectedItems as IList<Recipient>,
                 MailServer = Servers.SelectedItem as MailServer,
                 Sender = From.SelectedItem as Sender,
-                Mail = new Mail(Subject.Text, Content.Text),
+                Mail = new Mail()
+                {
+                    Body = Content.Text,
+                    Subject = Subject.Text
+                },
                 Title = Title.Text
             };
 
             using (var db = new SpamTools.lib.Data.DataBaseContext())
+            {
                 db.SchedulerTask.Add(task);
+                db.SaveChanges();
+            }
         }
     }
 }

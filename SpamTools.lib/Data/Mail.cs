@@ -18,5 +18,6 @@ namespace SpamTools.lib.Data
             Subject = subject;
             Body = body;
         }
+        public Mail() { }
     }
 }
