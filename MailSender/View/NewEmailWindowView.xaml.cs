@@ -35,8 +35,13 @@ namespace MailSender.View
                 DateTime = (DateTime) DateTimePicker.Value,
                 Recipients = Recipients.SelectedItems as IList<Recipient>,
                 MailServer = Servers.SelectedItem as MailServer,
-
+                Sender = From.SelectedItem as Sender,
+                Mail = new Mail(Subject.Text, Content.Text),
+                Title = Title.Text
             };
+
+            using (var db = new SpamTools.lib.Data.DataBaseContext())
+                db.SchedulerTask.Add(task);
         }
     }
 }
