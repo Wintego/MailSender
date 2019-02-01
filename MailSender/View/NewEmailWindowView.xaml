@@ -4,26 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender.View"
-        xmlns:xwt="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:data="clr-namespace:SpamTools.lib.Data;assembly=SpamTools.lib"
         xmlns:database="clr-namespace:SpamTools.lib.Database;assembly=SpamTools.lib"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Добавить новое задание" Height="Auto" Width="300"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
     <StackPanel Margin="5">
+        <TextBlock>Название задания</TextBlock>
+        <TextBox Name="Title"/>
         <TextBlock>Выберите дату и время отправки:</TextBlock>
-        <!--<xwt:DateTimePicker Name="DateTimePicker"></xwt:DateTimePicker>-->
+        <xctk:DateTimePicker Name="DateTimePicker"/>
         <TextBlock>Выберите отправителя:</TextBlock>
-        <ComboBox Name="From">
+        <ComboBox Name="From" ItemsSource="{Binding Senders}">
             <ComboBox.ItemTemplate>
                 <DataTemplate DataType="data:Sender">
-                    <TextBlock Text="{Binding Adress}"/>
+                    <TextBlock>
+                        <TextBlock Text="{Binding Name}"/> - <TextBlock Text="{Binding Adress}"/>
+                    </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock>Выберите получателей:</TextBlock>
-        <xwt:CheckComboBox ItemsSource="{Binding Recipients}">
-            <xwt:CheckComboBox.ItemTemplate>
+        <xctk:CheckComboBox ItemsSource="{Binding Recipients}" Name="Recipients">
+            <xctk:CheckComboBox.ItemTemplate>
                 <DataTemplate DataType="database:EmailRecipients">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name}"/>
@@ -32,13 +36,23 @@
                         <TextBlock Text=")"/>
                     </StackPanel>
                 </DataTemplate>
-            </xwt:CheckComboBox.ItemTemplate>
-        </xwt:CheckComboBox>
+            </xctk:CheckComboBox.ItemTemplate>
+        </xctk:CheckComboBox>
+        <TextBlock>Выберите сервер</TextBlock>
+        <ComboBox ItemsSource="{Binding Servers}" Name="Servers">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                     <TextBlock>
+                         <TextBlock Text="{Binding Adress}"/>:<TextBlock Text="{Binding Port}"/>
+                     </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock>Укажите тему</TextBlock>
         <TextBox Name="Subject"></TextBox>
         <TextBlock>Укажите текст письма</TextBlock>
         <TextBox Name="Content" Height="250"/>
-        <Button Content="Добавить задание"/>
+        <Button Content="Добавить задание" Click="ButtonBase_OnClick"/>
         <Button Content="Отменить"/>
     </StackPanel>
 </Window>

@@ -15,7 +15,7 @@
             <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Validation.Error="Validation_OnError"/>
         </GroupBox>
         <GroupBox Header="Адрес">
-            <TextBox Text="{Binding EmailAdress, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}"/>
         </GroupBox>
         <Button Content="Внести изменения" 
                 Command="{Binding MainWindowModel.UpdateRecipientCommand, Source={StaticResource Locator}}"

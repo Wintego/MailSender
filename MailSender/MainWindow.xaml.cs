@@ -31,7 +31,7 @@ namespace MailSender
 
         private void PlannerClick(object sender, RoutedEventArgs e)
         {
-            planner.IsSelected = true;
+            Planner.IsSelected = true;
         }
     }
 }

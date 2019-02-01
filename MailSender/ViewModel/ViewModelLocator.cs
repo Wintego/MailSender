@@ -26,6 +26,7 @@ namespace MailSender.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<NewEmailWindowView>();
+            SimpleIoc.Default.Register<SpamTools.lib.Service.ToUpperValueConverter>();
         }
 
         public MainViewModel Main

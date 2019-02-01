@@ -62,12 +62,15 @@ namespace MailSender.ViewModel
 
             Senders = new ObservableCollection<Sender>();
             Recipients = new ObservableCollection<Recipient>();
+            Servers = new ObservableCollection<MailServer>();
             using (var db = new SpamTools.lib.Data.DataBaseContext())
             {
                 foreach (var sender in db.Senders)
                     Senders.Add(sender);
                 foreach (var recipient in db.Recipients)
                     Recipients.Add(recipient);
+                foreach (var server in db.Servers)
+                    Servers.Add(server);
             }
             
         }
@@ -87,6 +90,7 @@ namespace MailSender.ViewModel
         }
 
         public ObservableCollection<Sender> Senders { get; }
+        public ObservableCollection<MailServer> Servers { get; }
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
         public ICommand UpdateRecipientsCommand { get; }
         public ICommand CreateNewRecipientCommand { get; }

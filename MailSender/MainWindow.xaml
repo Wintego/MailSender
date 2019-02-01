@@ -14,6 +14,9 @@
         Title="{Binding Title}" Height="450" Width="800"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
 
+    <Window.Resources>
+        <local:ToUpperValueConverter x:Key="ToUpperValueConverter" />
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -127,7 +130,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Планировщик" Name="planner">
+            <TabItem Header="Планировщик" Name="Planner">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -138,10 +141,6 @@
                             <StackPanel>
                                 <Calendar/>
                                 <Button Content="Добавить задание" Command="{Binding AddNewEmailCommand}"></Button>
-                                <!--<ListView Height="90" Name="Zadaniya">
-                                    <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
-                                    <controls:ListViewItemScheduler_custom></controls:ListViewItemScheduler_custom>
-                                </ListView>-->
                             </StackPanel>
                         </GroupBox>
                         <Button Margin="0,5,0,5">
@@ -169,7 +168,26 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="data:SchedulerTask">
                                     <StackPanel>
-                                        <TextBlock Text="{Binding DateTime}"/>
+                                        <TextBlock Text="{Binding Title, Converter={StaticResource ToUpperValueConverter}}" FontWeight="Bold"/>
+                                        <TextBlock>
+                                            <TextBlock Text="Дата: " FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding DateTime, StringFormat='dd.MM.yyyy'}"/>
+                                            <TextBlock Text="Время: " FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding DateTime, StringFormat='hh:mm'}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <TextBlock Text="Отправитель: " FontWeight="Bold"/><TextBlock Text="{Binding Sender.Name}"/>
+                                            &lt;<TextBlock Text="{Binding Sender.Adress}"/>&gt;
+                                            <TextBlock Text=" Сервер: " FontWeight="Bold"/><TextBlock Text="{Binding MailServer.Adress}"/><TextBlock Text=":"/><TextBlock Text="{Binding MailServer.Port}"/>,
+                                            SSL: <TextBlock Text="{Binding MailServer.UseSSL}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <TextBlock Text="Получатели: " FontWeight="Bold"/>
+                                            <!--<xwt:CheckComboBox ItemsSource="{Binding Recipients}" BorderThickness="0"/>-->
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <TextBlock Text="Тема: " FontWeight="Bold"/><TextBlock Text="{Binding Mail.Subject}"/> <TextBlock Text="Сообщение:" FontWeight="Bold"/> <TextBlock Text="{Binding Mail.Body}"/>
+                                        </TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

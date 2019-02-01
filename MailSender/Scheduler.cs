@@ -30,23 +30,16 @@ namespace MailSender
             {
                 new SchedulerTask
                 {
+                    Title = "Письма друзьям",
                     DateTime = DateTime.Now.Add(TimeSpan.FromMinutes(20)),
                     Recipients = new[]
                     {
-                        new EmailRecipients
+                        new Recipient
                         {
-                            Id = 1, Name = "Recipient 1", EmailAdress = "recipient1@mail.ru",
+                            Id = 1, Name = "Recipient 1", Adress = "recipient1@mail.ru",
                         },
-                        new EmailRecipients
-                        {
-                            Id = 2, Name = "Recipient 2", EmailAdress = "recipient2@mail.ru",
-                        },
-                        new EmailRecipients
-                        {
-                            Id = 3, Name = "Recipient 3", EmailAdress = "recipient3@mail.ru",
-                        }
                     },
-                    MailServer = new MailServer {Adress = "", Port = 2, UseSSL = true},
+                    MailServer = new MailServer {Adress = "mail.google.com", Port = 35, UseSSL = true},
                     Sender = new Sender
                     {
                         Adress = "sender@mail.ru",
@@ -57,27 +50,24 @@ namespace MailSender
                 },
                 new SchedulerTask
                 {
+                    Title = "План на месяц",
                     DateTime = DateTime.Now.Add(TimeSpan.FromMinutes(40)),
                     Recipients = new[]
                     {
-                        new EmailRecipients
+                        new Recipient
                         {
-                            Id = 1, Name = "Recipient 1", EmailAdress = "recipient1@mail.ru",
+                            Id = 1, Name = "Recipient 1", Adress = "recipient1@mail.ru",
                         },
-                        new EmailRecipients
+                        new Recipient
                         {
-                            Id = 2, Name = "Recipient 2", EmailAdress = "recipient2@mail.ru",
-                        },
-                        new EmailRecipients
-                        {
-                            Id = 3, Name = "Recipient 3", EmailAdress = "recipient3@mail.ru",
+                            Id = 2, Name = "Recipient 2", Adress = "recipient2@mail.ru",
                         }
                     },
-                    MailServer = new MailServer {Adress = "", Port = 2, UseSSL = true},
+                    MailServer = new MailServer {Adress = "mail.yandex.ru", Port = 2, UseSSL = true},
                     Sender = new Sender
                     {
                         Adress = "sender@mail.ru",
-                        Name = "Sender1",
+                        Name = "Sender2",
                         Password = "pas"
                     },
                     Mail = new Mail("subject2", "body2"),

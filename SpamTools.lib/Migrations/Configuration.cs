@@ -38,6 +38,12 @@ namespace SpamTools.lib.Migrations
                 new Recipient {Id = 3, Name="Recipient 3", Adress="recipient3@mail.ru"}
             };
             context.Recipients.AddRange(Recipient);
+
+            List<MailServer> Servers = new List<MailServer>
+            {
+                new MailServer {Id = 1, Adress = "smtp.yandex.ru", Port = 465, UseSSL = true}
+            };
+            context.Servers.AddRange(Servers);
         }
     }
 }
