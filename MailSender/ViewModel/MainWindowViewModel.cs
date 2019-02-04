@@ -59,6 +59,8 @@ namespace MailSender.ViewModel
             AddNewEmailCommand = new RelayCommand(OnAddNewEmailCommandExecute, true);
             ExportRecipientCommand = new RelayCommand(OnExportRecipientExecute, true);
             SenderAddCommand = new RelayCommand(OnSenderAddCommandExecute,true);
+            SenderEditCommand = new RelayCommand(OnSenderEditCommandExecute, true);
+            SenderRemoveCommand = new RelayCommand(OnSenderRemoveCommandExecute, true);
 
             Senders = new ObservableCollection<Sender>();
             Recipients = new ObservableCollection<Recipient>();
@@ -72,7 +74,6 @@ namespace MailSender.ViewModel
                 foreach (var server in db.Servers)
                     Servers.Add(server);
             }
-            
         }
 
         private void OnUpdateRecipientsCommandExecuted()
@@ -176,7 +177,26 @@ namespace MailSender.ViewModel
         public ICommand SenderAddCommand { get; set; }
         private void OnSenderAddCommandExecute()
         {
-            new MailSender.View.Senders().ShowDialog();
+            new MailSender.View.NewSenderWindowView().ShowDialog();
+        }
+        public ICommand SenderEditCommand { get; set; }
+        private void OnSenderEditCommandExecute()
+        {
+            new MailSender.View.NewSenderWindowView(SelectedSender).ShowDialog();
+        }
+        public ICommand SenderRemoveCommand { get; set; }
+        private void OnSenderRemoveCommandExecute()
+        {
+            using (var db = new SpamTools.lib.Data.DataBaseContext())
+            {
+                var remove = from sender in db.Senders where sender.Id == SelectedSender.Id select sender;
+                foreach (var r in remove)
+                {
+                    db.Senders.Remove(r);
+                    Status = $"{r.Name} удалён";
+                }
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -66,14 +66,27 @@
                         </ToolBar>-->
 
                         <ToolBar Band="0" BandIndex="0">
-                            <TextBlock>КомбоБокс работает</TextBlock>
-                            <ComboBox ItemsSource="{Binding Senders}">
+                            <TextBlock>Отправители (работает)</TextBlock>
+                            <ComboBox ItemsSource="{Binding Senders}" SelectedIndex="0" Width="150" SelectedItem="{Binding SelectedSender}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="data:Sender">
-                                        <TextBlock Text="{Binding Name}"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text=":"/>
+                                            <TextBlock Text="{Binding Adress}" Opacity="0.7" Foreground="DarkRed"/>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                            <Button Command="{Binding SenderAddCommand}">
+                                <fa:ImageAwesome Icon="Plus" Height="13"/>
+                            </Button>
+                            <Button Command="{Binding SenderEditCommand}">
+                                <fa:ImageAwesome Icon="Edit" Height="13"/>
+                            </Button>
+                            <Button Command="{Binding SenderRemoveCommand}">
+                                <fa:ImageAwesome Icon="Remove" Height="13"/>
+                            </Button>
                             <controls:Otpraviteli PanelText="Не работает" x:Name="Otpraviteli" ItemsSource="{Binding Senders}" SelectedIndex="3"
                                                   CreateItemCommand="{Binding SenderAddCommand}" EditItemCommand="" RemoveItemCommand="">
                                 <controls:Otpraviteli.ItemTemplate>

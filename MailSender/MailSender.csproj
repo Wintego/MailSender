@@ -145,17 +145,17 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\NewEmailWindowView.xaml.cs">
-      <DependentUpon>NewEmailWindowView.xaml</DependentUpon>
+    <Compile Include="View\NewSenderWindowView.xaml.cs">
+      <DependentUpon>NewSenderWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewTaskWindowView.xaml.cs">
+      <DependentUpon>NewTaskWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RecipientsEditorView.xaml.cs">
       <DependentUpon>RecipientsEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Senders.xaml.cs">
-      <DependentUpon>Senders.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfTestMailSender.cs" />
     <Page Include="Controls\ListViewItemScheduler-custom.xaml">
@@ -194,7 +194,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\NewEmailWindowView.xaml">
+    <Page Include="View\NewSenderWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewTaskWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,10 +207,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RecipientsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Senders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

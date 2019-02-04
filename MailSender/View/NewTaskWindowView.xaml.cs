@@ -49,6 +49,8 @@ namespace MailSender.View
                 db.SchedulerTask.Add(task);
                 db.SaveChanges();
             }
+
+            this.Close();
         }
     }
 }
